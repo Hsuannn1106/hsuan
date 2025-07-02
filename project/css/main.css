@@ -1,0 +1,278 @@
+.body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', '微軟正黑體', sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(255, 228, 196, 0.3), rgba(255, 228, 196, 0.3)), 
+                  url('/api/placeholder/1920/1080') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.control-button {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 248, 220, 0.8);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/*start 開始鍵*/
+.title {
+    position: absolute;
+    top: 20%;
+    text-align: center;
+    color: #8B4513;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
+}
+
+.title-main {
+    font-size: 5rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.start-button {
+    padding: 1rem 3rem;
+    font-size: 1.8rem;
+    background-color: #FF8C00;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.top-left-controls {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+}
+
+.decorative-animals {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.animal { /*在動物icon畫圈*/
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 222, 173, 0.8);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+}
+
+/*home-page*/
+.hp-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+    
+    /* 頂部區域 - 包含標題和按鈕 */
+/*.hp-top-area {
+    height: 60px;
+    background-color: #FF8C00;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+    
+.hp-top-left {
+    display: flex;
+    align-items: center;
+}*/
+    
+.game-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    margin-right: 15px;
+}
+    
+.top-right {
+    display: flex;
+    align-items: center;
+}
+    
+.player-info {
+    background-color: rgba(255, 248, 220, 0.9);
+    border-radius: 20px;
+    padding: 5px 15px;
+    margin-right: 10px;
+    color: #8B4513;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+    
+    /* 主要內容區域 */
+.hp-main-content {
+    flex: 1;
+    display: flex;
+    background: linear-gradient(rgba(255, 228, 196, 0.3), rgba(255, 228, 196, 0.3)), 
+                  url('/api/placeholder/1920/1080') no-repeat center center;
+    background-size: cover;
+}
+    
+    /* 左側菜單 */
+.left-menu {
+    width: 250px;
+    background-color: rgba(255, 222, 173, 0.9);
+    padding: 20px 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+    
+.menu-item {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    color: #8B4513;
+    font-weight: bold;
+    cursor: pointer;
+    border-left: 4px solid transparent;
+    transition: all 0.2s ease;
+}
+    
+.menu-item:hover {
+    background-color: rgba(255, 248, 220, 0.8);
+    border-left-color: #FF8C00;
+}
+    
+.menu-item.active {
+    background-color: rgba(255, 248, 220, 0.8);
+    border-left-color: #FF8C00;
+}
+    
+.menu-icon{
+    margin-right: 10px;
+    font-size: 1.5rem;
+}
+    
+    /* 中心內容區 */
+.center-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+    
+    /* 對話區 */
+.dialogue-area {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 250px;
+    background-color: rgba(255, 248, 220, 0.9);
+    border-top: 3px solid #FF8C00;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+}
+    
+.character-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+    
+.character-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #FFA07A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin-right: 15px;
+}
+    
+.character-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #8B4513;
+}
+    
+.dialogue-text {
+    flex: 1;
+    overflow-y: auto;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    color: #5D4037;
+    line-height: 1.5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+    
+.dialogue-options {
+    display: flex;
+    gap: 10px;
+}
+    
+.dialogue-option {
+    background-color: #FF8C00;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+    
+.dialogue-option:hover {
+    background-color: #FFA500;
+    transform: scale(1.05);
+}
+    
+    /* 動物顯示區域 */
+.animal-display {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 250px; /* 給對話區留出空間 */
+}
+    
+.animal-character {
+    width: 200px;
+    height: 200px;
+    background-color: rgba(255, 222, 173, 0.8);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}

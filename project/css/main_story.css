@@ -1,0 +1,59 @@
+    .page-container .story-title {
+      color: #8B4513;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+    
+    .page-container .story-chapter {
+      margin-bottom: 30px;
+    }
+    
+    .page-container .chapter-title {
+      background-color: #FF8C00;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .page-container .chapter-content {
+      background-color: white;
+      border-radius: 8px;
+      padding: 15px;
+      margin-left: 10px;
+      margin-right: 10px;
+      display: none;
+    }
+    
+    .page-container .chapter-content.active {
+      display: block;
+    }
+    
+    .page-container .chapter-status {
+      font-size: 0.9rem;
+      color: #FFF;
+      background-color: #8B4513;
+      padding: 3px 8px;
+      border-radius: 10px;
+    }
+    
+    .page-container .back-button {
+      background-color: #FF8C00;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }

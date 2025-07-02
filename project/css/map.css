@@ -1,0 +1,89 @@
+    .page-container .map-title {
+      color: #8B4513;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+    
+    .page-container .zones {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 20px;
+    }
+    
+    .page-container .zone {
+      width: 300px;
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+      position: relative;
+    }
+    
+    .page-container .zone:hover {
+      transform: translateY(-10px);
+    }
+    
+    .page-container .zone-image {
+      width: 100%;
+      height: 150px;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+    }
+    
+    .page-container .zone h3 {
+      color: #8B4513;
+      margin-bottom: 10px;
+    }
+    
+    .page-container .zone p {
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+    
+    .game-btn {
+      display: inline-block;
+      background-color: #FF8C00;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+      font-weight: bold;
+    }
+    
+    .game-btn:hover {
+      background-color: #FFA500;
+    }
+    
+    .locked-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    
+    .lock-icon {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      justify-content: center;
+    }

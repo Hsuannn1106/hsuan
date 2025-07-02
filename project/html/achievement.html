@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>成就系統 - 動物研究院</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/achievement.css">
+</head>
+
+<body>
+  <div class="hp-container">
+    <!-- 頂部區域 -->
+    <div class="hp-top-area">
+      <div class="hp-top-left">
+        <div class="hp-title">動物研究院</div>
+        <div class="control-button">  <!--聲音icon-->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          </svg>
+        </div>
+        <div class="control-button">  <!--資訊icon-->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+      </div>
+      <div class="hp-top-right">
+        <div class="player-info">研究點數: 000</div>
+        <div class="control-button">  <!--設定icon-->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 主要內容區域 -->
+    <div class="hp-main-content">
+      <!-- 左側菜單 -->
+      <div class="left-menu">
+        <div class="menu-item">
+          <span class="menu-icon">📖</span>
+          <span>主線劇情</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-icon">🦊</span>
+          <span>動物圖鑑</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-icon">🐾</span>
+          <span>探索地圖</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-icon">🧪</span>
+          <span>研究實驗室</span>
+        </div>
+        <div class="menu-item active">
+          <span class="menu-icon">🏆</span>
+          <span>成就系統</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-icon">🎒</span>
+          <span>物品背包</span>
+        </div>
+      </div>
+      
+      <!-- 中心內容區 -->
+      <div class="center-content">
+        <div class="page-container">
+          <h2 class="achievements-title">成就系統</h2>
+          
+          <div class="achievements-summary">
+            <div class="summary-item">
+              <div class="summary-value">5/20</div>
+              <div class="summary-label">已完成成就</div>
+            </div>
+            <div class="summary-item">
+              <div class="summary-value">25%</div>
+              <div class="summary-label">完成度</div>
+            </div>
+            <div class="summary-item">
+              <div class="summary-value">3/8</div>
+              <div class="summary-label">收集動物</div>
+            </div>
+            <div class="summary-item">
+              <div class="summary-value">150</div>
+              <div class="summary-label">總研究點數</div>
+            </div>
+          </div>
+          
+          <div class="achievements-tabs">
+            <div class="tab active">全部成就</div>
+            <div class="tab">收集成就</div>
+            <div class="tab">探索成就</div>
+            <div class="tab">研究成就</div>
+          </div>
+          
+          <div class="achievements-list">
+            <!-- 已完成成就 -->
+            <div class="achievement-card">
+              <div class="achievement-icon">🦊</div>
+              <div class="achievement-title">初級收集家</div>
+              <div class="achievement-description">收集3種不同的動物</div>
+              <div class="achievement-progress">
+                <div class="progress-fill" style="width: 100%;"></div>
+              </div>
+              <div class="achievement-status">3/3</div>
+              <div class="achievement-completed">已完成</div>
+            </div>
+            
+            <div class="achievement-card">
+              <div class="achievement-icon">🌳</div>
+              <div class="achievement-title">森林探險家</div>
+              <div class="achievement-description">完成森林區域的連連看遊戲</div>
+              <div class="achievement-progress">
+                <div class="progress-fill" style="width: 100%;"></div>
+              </div>
+              <div class="achievement-status">1/1</div>
+              <div class="achievement-completed">已完成</div>
+            </div>
+            
+            <!-- 進行中成就 -->
+            <div class="achievement-card">
+              <div class="achievement-icon">🦁</div>
+              <div class="achievement-title">中級收集家</div>
+              <div class="achievement-description">收集8種不同的動物</div>
+              <div class="achievement-progress">
+                <div class="progress-fill" style="width: 37.5%;"></div>
+              </div>
+              <div class="achievement-status">3/8</div>
+            </div>
+            
+            <div class="achievement-card">
+              <div class="achievement-icon">🌊</div>
+              <div class="achievement-title">海洋探險家</div>
+              <div class="achievement-description">完成海洋區域的找不同遊戲</div>
+              <div class="achievement-progress">
+                <div class="progress-fill" style="width: 0%;"></div>
+              </div>
+              <div class="achievement-status">0/1</div>
+            </div>
+            
+            <div class="achievement-card">
+              <div class="achievement-icon">🧪</div>
+              <div class="achievement-title">初級研究員</div>
+              <div class="achievement-description">在研究實驗室中照顧動物10次</div>
+              <div class="achievement-progress">
+                <div class="progress-fill" style="width: 70%;"></div>
+              </div>
+              <div class="achievement-status">7/10</div>
+            </div>
+            
+            <!-- 未解鎖成就 -->
+            <div class="achievement-card achievement-locked">
+              <div class="achievement-icon">🏔️</div>
+              <div class="achievement-title">山地探險家</div>
+              <div class="achievement-description">完成山地區域的迷宮遊戲</div>
+              <div class="achievement-progress">
+                <div class="progress-fill" style="width: 0%;"></div>
+              </div>
+              <div class="achievement-status">0/1</div>
+            </div>
+            
+            <div class="achievement-card achievement-locked">
+              <div class="achievement-icon">🐘</div>
+              <div class="achievement-title">高級收集家</div>
+              <div class="achievement-description">收集15種不同的動物</div>
+              <div class="achievement-progress">
+                <div class="progress-fill" style="width: 20%;"></div>
+              </div>
+              <div class="achievement-status">3/15</div>
+            </div>
+            
+            <div class="achievement-card achievement-locked">
+              <div class="achievement-icon">🔍</div>
+              <div class="achievement-title">動物專家</div>
+              <div class="achievement-description">回答20個關於動物的問題</div>
+              <div class="achievement-progress">
+                <div class="progress-fill" style="width: 25%;"></div>
+              </div>
+              <div class="achievement-status">5/20</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../js/menu_click.js"></script>
+  <script src="../js/achievement.js"></script>
+</body>
+</html>
