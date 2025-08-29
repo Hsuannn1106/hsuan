@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>故事過渡 - 動物研究院</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/story_transition.css">
+  <link rel="stylesheet" href="../css/ai-tools.css">
+</head>
+<body>
+  <main class="story-container">
+    <article class="story-content">
+      <header class="story-header">
+        <div class="story-icon">🌟</div>
+        <h1 id="storyTitle">恭喜完成！</h1>
+      </header>
+      
+      <section class="story-body">
+        <p id="storyDescription">你成功完成了這個挑戰！</p>
+        <div class="story-rewards" id="storyRewards"></div>
+      </section>
+      
+      <footer class="story-footer">
+        <div class="story-actions">
+          <button class="story-button primary" id="continueButton">繼續冒險</button>
+          <button class="story-button secondary" id="mapButton">返回地圖</button>
+        </div>
+        
+        <div class="story-progress">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="progress-text" id="progressText">進度：1/3</div>
+        </div>
+      </footer>
+    </article>
+    
+    <div class="story-background" aria-hidden="true">
+      <div class="floating-element">🦋</div>
+      <div class="floating-element">🌸</div>
+      <div class="floating-element">✨</div>
+      <div class="floating-element">🍃</div>
+    </div>
+  </main>
+  
+  <!-- AI工具選擇器 -->
+  <div class="ai-tools-overlay" id="aiToolsOverlay">
+    <div class="ai-tools-container">
+      <div class="ai-tools-header">
+        <h3>🤖 AI學習助手</h3>
+        <p>選擇你喜歡的AI工具來幫助學習</p>
+        <button class="ai-tools-close" id="aiToolsClose">×</button>
+      </div>
+      
+      <div class="ai-tools-grid">
+        <a href="https://chat.openai.com" target="_blank" class="ai-tool-card chatgpt">
+          <div class="ai-tool-icon">🧠</div>
+          <div class="ai-tool-info">
+            <h4>ChatGPT</h4>
+            <p>OpenAI的智能對話助手</p>
+          </div>
+        </a>
+        
+        <a href="https://gemini.google.com" target="_blank" class="ai-tool-card gemini">
+          <div class="ai-tool-icon">💎</div>
+          <div class="ai-tool-info">
+            <h4>Gemini</h4>
+            <p>Google的AI助手</p>
+          </div>
+        </a>
+        
+        <a href="https://claude.ai" target="_blank" class="ai-tool-card claude">
+          <div class="ai-tool-icon">🎭</div>
+          <div class="ai-tool-info">
+            <h4>Claude</h4>
+            <p>Anthropic的AI助手</p>
+          </div>
+        </a>
+        
+        <a href="https://copilot.microsoft.com" target="_blank" class="ai-tool-card copilot">
+          <div class="ai-tool-icon">🚁</div>
+          <div class="ai-tool-info">
+            <h4>Copilot</h4>
+            <p>Microsoft的AI助手</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../js/game-config.js"></script>
+  <script src="../js/story_transition.js"></script>
+  <script src="../js/ai-tools.js"></script>
+</body>
+</html>

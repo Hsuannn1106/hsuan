@@ -1,0 +1,61 @@
+/* 共用按鈕 */
+.control-button {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 248, 220, 0.8);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* 返回按鈕 */
+.back-button {
+    background-color: #FF8C00;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #FFA500;
+}
+
+
+/*共用主頁頂部 */
+.hp-top-area {
+    height: 60px;
+    background-color: #FF8C00;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.hp-top-left {
+    display: flex;
+    align-items: center;
+}
+
+.hp-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    margin-right: 15px;
+}
+
+.hp-top-right {
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,201 @@
+/* AI助手小工具樣式 */
+.ai-helper-widget {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+}
+
+.ai-helper-btn {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.ai-helper-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.ai-icon {
+  font-size: 1rem;
+}
+
+/* AI工具選擇器樣式 */
+.ai-tools-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.ai-tools-overlay.active {
+  display: flex;
+}
+
+.ai-tools-container {
+  background: white;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.ai-tools-header {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.ai-tools-header h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+}
+
+.ai-tools-header p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+
+.ai-tools-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.ai-tools-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.ai-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.ai-tool-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  background: #f8fafc;
+}
+
+.ai-tool-card:hover {
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.ai-tool-card.chatgpt:hover {
+  border-color: #10a37f;
+  box-shadow: 0 4px 12px rgba(16, 163, 127, 0.15);
+}
+
+.ai-tool-card.gemini:hover {
+  border-color: #4285f4;
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.15);
+}
+
+.ai-tool-card.claude:hover {
+  border-color: #ff6b35;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.15);
+}
+
+.ai-tool-card.copilot:hover {
+  border-color: #0078d4;
+  box-shadow: 0 4px 12px rgba(0, 120, 212, 0.15);
+}
+
+.ai-tool-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+}
+
+.ai-tool-info h4 {
+  margin: 0 0 0.3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.ai-tool-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+/* 響應式設計 */
+@media (max-width: 48rem) {
+  .ai-tools-container {
+    width: 95%;
+    max-height: 90vh;
+  }
+  
+  .ai-tools-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+  
+  .ai-tool-card {
+    padding: 0.8rem;
+  }
+  
+  .ai-tool-icon {
+    font-size: 2rem;
+  }
+  
+  .ai-helper-widget {
+    position: static;
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  .ai-helper-btn {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+}

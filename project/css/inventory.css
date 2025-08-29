@@ -1,0 +1,271 @@
+    .inventory-container {
+      width: 90%;
+      margin: 20px auto;
+      background-color: rgba(255, 248, 220, 0.9);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .inventory-title {
+      color: #8B4513;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+    
+    .inventory-stats {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      background-color: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .inventory-stat {
+      text-align: center;
+      padding: 0 15px;
+    }
+    
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #FF8C00;
+      margin-bottom: 5px;
+    }
+    
+    .stat-label {
+      color: #8B4513;
+      font-size: 0.9rem;
+    }
+    
+    .inventory-tabs {
+      display: flex;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #FF8C00;
+    }
+    
+    .tab {
+      padding: 10px 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px 8px 0 0;
+      margin-right: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #8B4513;
+      border: 1px solid #ddd;
+      border-bottom: none;
+    }
+    
+    .tab.active {
+      background-color: #FF8C00;
+      color: white;
+    }
+    
+    .inventory-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+    }
+    
+    .item-slot {
+      background-color: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+    }
+    
+    .item-slot:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .item-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .item-name {
+      font-weight: bold;
+      color: #5D4037;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+    
+    .item-quantity {
+      background-color: #FF8C00;
+      color: white;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.8rem;
+      font-weight: bold;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+    
+    .item-rarity {
+      font-size: 0.8rem;
+      color: #8B4513;
+    }
+    
+    .rarity-common {
+      color: #5D4037;
+    }
+    
+    .rarity-uncommon {
+      color: #2E7D32;
+    }
+    
+    .rarity-rare {
+      color: #1565C0;
+    }
+    
+    .rarity-epic {
+      color: #6A1B9A;
+    }
+    
+    .rarity-legendary {
+      color: #FF6F00;
+    }
+    
+    .empty-slot {
+      background-color: #f9f9f9;
+      border: 2px dashed #ddd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #aaa;
+      font-size: 1.5rem;
+    }
+    
+    .item-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal-content {
+      background-color: white;
+      border-radius: 15px;
+      padding: 20px;
+      width: 400px;
+      max-width: 90%;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #8B4513;
+    }
+    
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+    }
+    
+    .modal-body {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    
+    .modal-icon {
+      font-size: 4rem;
+      margin-right: 20px;
+      background-color: #f9f9f9;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+    }
+    
+    .modal-info {
+      flex: 1;
+    }
+    
+    .modal-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #5D4037;
+      margin-bottom: 5px;
+    }
+    
+    .modal-rarity {
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+    
+    .modal-description {
+      color: #666;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    
+    .modal-stats {
+      font-size: 0.9rem;
+      color: #8B4513;
+    }
+    
+    .modal-actions {
+      display: flex;
+      justify-content: space-around;
+    }
+    
+    .modal-button {
+      background-color: #FF8C00;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .modal-button:hover {
+      background-color: #FFA500;
+    }
+    
+    @media (max-width: 768px) {
+      .inventory-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .inventory-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }

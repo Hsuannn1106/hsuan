@@ -1,0 +1,317 @@
+        .page-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            margin: 20px;
+            height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .page-container .header {
+            background: linear-gradient(45deg, #ff6b6b6a, #82cdffd2);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .page-container .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-container .progress-container {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .page-container .progress-bar {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+        }
+
+        .page-container .progress-fill {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            height: 100%;
+            transition: width 0.5s ease;
+            border-radius: 10px;
+        }
+
+        .page-container .progress-text {
+            margin-top: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .page-container .controls {
+            padding: 20px 30px;
+            background: #F8F9FA;
+            border-bottom: 2px solid #E9ECEF;
+        }
+
+        .page-container .filter-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        /*切換標籤*/
+        .page-container .tab-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background: #E9ECEF;
+            color: #495057;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .page-container .tab-button.active {
+            background: linear-gradient(45deg, #ff6b6b6a, #82cdffd2);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .page-container .search-container {
+            position: relative;
+            max-width: 300px;
+        }
+
+        .page-container .search-input {
+            width: 100%;
+            padding: 12px 20px 12px 45px;
+            border: 2px solid #DEE2E6;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .page-container .search-input:focus {
+            border-color: #4ECDC4;
+        }
+
+        .page-container .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6C757D;
+        }
+
+        .page-container .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .page-container .animal-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-container .animal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .page-container .animal-card.collected {
+            border: 3px solid #28A745;
+        }
+
+        .page-container .animal-card.uncollected {
+            border: 3px solid #DEE2E6;
+            opacity: 0.6;
+        }
+
+        .page-container .card-image {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            background: linear-gradient(135deg, #FFE4E1, #F0F8FF);
+        }
+
+        .page-container .uncollected .card-image {
+            background: #F8F9FA;
+            color: #DEE2E6;
+        }
+
+        .page-container .card-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #495057;
+        }
+
+        .page-container .card-category {
+            font-size: 14px;
+            color: #6C757D;
+            background: #E9ECEF;
+            padding: 5px 10px;
+            border-radius: 15px;
+            display: inline-block;
+        }
+
+        .page-container .collected-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #28A745;
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        /* 模態框樣式保持全域性 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            animation: modalAppear 0.3s ease;
+        }
+
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6C757D;
+        }
+
+        .modal-image {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            background: linear-gradient(135deg, #FFE4E1, #F0F8FF);
+        }
+
+        .sound-button {
+            background: linear-gradient(45deg, #fec5bf, #c6e1f8);
+            color: rgb(90, 90, 90);
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s ease;
+        }
+
+        .sound-button:hover {
+            transform: scale(1.05);
+        }
+
+        .animal-info {
+            margin-top: 20px;
+            text-align: left;
+            background: #F8F9FA;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .achievement-popup {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transform: translateX(400px);
+            transition: transform 0.5s ease;
+            z-index: 1001;
+        }
+
+        .achievement-popup.show {
+            transform: translateX(0);
+        }
+
+        @media (max-width: 768px) {
+            .page-container .header h1 {
+                font-size: 2em;
+            }
+            
+            .page-container .cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 15px;
+                padding: 20px;
+            }
+            
+            .page-container .animal-card {
+                padding: 15px;
+            }
+            
+            .page-container .card-image {
+                width: 100px;
+                height: 100px;
+        font-size: 50px;
+    }
+}

@@ -1,0 +1,129 @@
+/* 動物獎勵彈窗樣式 */
+.animal-reward-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.animal-reward-popup.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.reward-content {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.animal-reward-popup.show .reward-content {
+    transform: scale(1);
+}
+
+.reward-header h2 {
+    color: #fff;
+    font-size: 24px;
+    margin: 0 0 10px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.reward-header p {
+    color: #fff;
+    font-size: 16px;
+    margin: 0 0 20px 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.reward-animals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.reward-animal {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 15px;
+    transition: transform 0.2s ease;
+}
+
+.reward-animal:hover {
+    transform: translateY(-5px);
+}
+
+.animal-emoji {
+    font-size: 40px;
+    margin-bottom: 8px;
+}
+
+.animal-name {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.animal-category {
+    font-size: 12px;
+    color: #666;
+    background: #f0f0f0;
+    padding: 2px 8px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.reward-close-btn {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(238, 90, 36, 0.4);
+}
+
+.reward-close-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(238, 90, 36, 0.6);
+}
+
+/* 響應式設計 */
+@media (max-width: 480px) {
+    .reward-content {
+        padding: 20px;
+        margin: 20px;
+    }
+    
+    .reward-header h2 {
+        font-size: 20px;
+    }
+    
+    .reward-animals {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .animal-emoji {
+        font-size: 30px;
+    }
+}
