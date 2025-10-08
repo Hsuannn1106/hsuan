@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>找不同遊戲 - 動物研究院</title>
+  
+  <!-- 樣式表引入 -->
+  <link rel="stylesheet" href="../css/styles.css">                    <!-- 基礎樣式 -->
+  <link rel="stylesheet" href="../css/home.css">                     <!-- 首頁樣式 -->
+  <link rel="stylesheet" href="../css/game2.css">                    <!-- 找不同遊戲專用樣式 -->
+  <link rel="stylesheet" href="../css/modal.css">                    <!-- 彈出視窗樣式 -->
+  <link rel="stylesheet" href="../css/achievement_notification.css"> <!-- 成就通知樣式 -->
+  <link rel="stylesheet" href="../css/reward_display.css">           <!-- 獎勵顯示樣式 -->
+  <link rel="stylesheet" href="../css/game_animal_reward.css">       <!-- 動物獎勵樣式 -->
+</head>
+<body>
+  <!-- 主容器 -->
+  <div class="hp-container">
+    <!-- 頂部導航區域 -->
+    <div class="hp-top-area">
+      <!-- 左側：標題和音效控制 -->
+      <div class="hp-top-left">
+        <div class="hp-title">動物研究院</div>
+        <!-- 音效控制按鈕 -->
+        <div class="control-button">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          </svg>
+        </div>
+      </div>
+      
+      <!-- 右側：玩家資訊和返回按鈕 -->
+      <div class="hp-top-right">
+        <div class="player-info">研究點數: 0</div>
+        <button class="back-button" onclick="window.location.href='map.html'">返回地圖</button>
+      </div>
+    </div>
+    
+    <!-- 主要遊戲內容區域 -->
+    <div class="g2-main-content">
+      <!-- 中心內容區 -->
+      <div class="g2-center-content">
+        <!-- 關卡標題區域 -->
+        <div class="g2-level-title">
+          <h1>第二關：找不同</h1>
+          <p>找出兩張圖片中的不同之處！</p>
+        </div>
+        
+        <!-- 遊戲主容器 -->
+        <div class="g2-game-container">
+          <!-- 兩張對比圖片容器 -->
+          <div class="g2-images-container">
+            <!-- 左側圖片（原始圖） -->
+            <div class="g2-image-wrapper" id="leftImage">
+              <div class="g2-image">
+                <img src="../images/pic1.png" alt="左邊圖片">
+                <!-- 差異點將由 JavaScript 動態添加 -->
+              </div>
+            </div>
+            
+            <!-- 右側圖片（有差異的圖） -->
+            <div class="g2-image-wrapper" id="rightImage">
+              <div class="g2-image">
+                <img src="../images/pic2.png" alt="右邊圖片">
+                <!-- 可點擊的差異點將由 JavaScript 動態添加 -->
+              </div>
+            </div>
+          </div>
+          
+          <!-- 遊戲狀態和控制區域 -->
+          <div class="g2-timer-container">
+            <div class="g2-timer" id="timer">時間: 03:00</div>                                    <!-- 倒數計時器 -->
+            <div class="g2-differences-counter" id="differencesCounter">找到: 0/5</div>          <!-- 進度計數器 -->
+            <button class="g2-hint-button" id="hintButton">提示 <span class="g2-hint-count" id="hintCount">3</span></button> <!-- 提示按鈕 -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ==================== 彈出視窗區域 ==================== -->
+  
+  <!-- 正確答案彈出視窗（目前未使用） -->
+  <div class="modal" id="correctModal">
+    <div class="modal-content">
+      <div class="modal-icon">🎉</div>                          <!-- 慶祝圖示 -->
+      <div class="modal-title">找到了！</div>                    <!-- 標題 -->
+      <div class="modal-message">你發現了一處不同！</div>      <!-- 訊息內容 -->
+      <button class="modal-button">繼續</button>                 <!-- 繼續按鈕 -->
+    </div>
+  </div>
+  
+  <!-- 遊戲完成彈出視窗 -->
+  <div class="modal" id="completeModal">
+    <div class="modal-content">
+      <div class="modal-icon">🏆</div>                                    <!-- 完成圖示 -->
+      <div class="modal-title">關卡完成！</div>                          <!-- 標題 -->
+      <div class="modal-message" id="completeMessage">你獲得了50研究點數！</div> <!-- 動態訊息內容 -->
+      <button class="modal-button">下一個</button>                        <!-- 繼續按鈕 -->
+    </div>
+  </div>
+  
+  <!-- 遊戲失敗彈出視窗 -->
+  <div class="modal" id="failModal">
+    <div class="modal-content">
+      <div class="modal-icon">⏰</div>                            <!-- 時間到圖示 -->
+      <div class="modal-title">時間到！</div>                      <!-- 標題 -->
+      <div class="modal-message">別擔心，再試一次吧！</div>        <!-- 鼓勵訊息 -->
+      <button class="modal-button">重新開始</button>              <!-- 重新開始按鈕 -->
+    </div>
+  </div>
+  
+  <!-- JavaScript 腳本引入 -->
+  <script src="../js/achievement_system.js"></script>     <!-- 成就系統 -->
+  <script src="../js/item-reward-system.js"></script>    <!-- 物品獎勵系統 -->
+  <script src="../js/game_progress.js"></script>         <!-- 遊戲進度管理 -->
+  <script src="../js/animal_collect.js"></script>        <!-- 動物收集系統 -->
+  <script src="../js/game2.js"></script>                 <!-- 找不同遊戲主邏輯 -->
+</body>
+</html>

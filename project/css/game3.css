@@ -1,0 +1,208 @@
+/* 迷宮遊戲 */
+.g3-main-content {
+  flex: 1;
+  display: flex;
+  background-color: #FFF8DC;
+}
+
+/* 左側菜單樣式 */
+.left-menu {
+  width: 250px;
+  background-color: rgba(255, 222, 173, 0.9);
+  padding: 20px 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.menu-item {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  color: #8B4513;
+  font-weight: bold;
+  cursor: pointer;
+  border-left: 4px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.menu-item:hover {
+  background-color: rgba(255, 248, 220, 0.8);
+  border-left-color: #FF8C00;
+}
+
+.menu-item.active {
+  background-color: rgba(255, 248, 220, 0.8);
+  border-left-color: #FF8C00;
+}
+
+.menu-icon {
+  margin-right: 10px;
+  font-size: 1.5rem;
+}
+
+.g3-center-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.g3-level-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.g3-level-title h1 {
+  color: #8B4513;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.g3-level-title p {
+  color: #A0522D;
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+
+.g3-game-container {
+  width: 90%;
+  max-width: 600px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+.g3-maze-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: #f9f9f9;
+  border: 2px solid #FFE4B5;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.g3-maze {
+  display: grid;
+  width: 100%;
+  height: 100%;
+}
+
+.g3-cell {
+  border: 1px solid #ddd;
+  background-color: white;
+}
+
+.g3-wall {
+  background-color: #8B4513;
+}
+
+.g3-start {
+  background-color: #4CAF50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.g3-end {
+  background-color: #FF8C00;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.g3-player {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: #1E88E5;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  transition: all 0.2s;
+  z-index: 10;
+}
+
+.g3-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.g3-control-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.g3-control-button {
+  width: 50px;
+  height: 50px;
+  background-color: #FF8C00;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.g3-control-button:hover {
+  background-color: #FFA500;
+}
+
+.g3-control-button:active {
+  transform: scale(0.95);
+}
+
+.g3-control-button.empty {
+  background-color: transparent;
+  cursor: default;
+}
+
+.g3-timer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 10px 15px;
+}
+
+.g3-timer {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #8B4513;
+}
+
+.g3-steps-counter {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #8B4513;
+}
+
+@keyframes celebrate {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.g3-celebration {
+  position: absolute;
+  font-size: 2rem;
+  animation: celebrate 0.5s infinite;
+}

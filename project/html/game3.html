@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>迷宮遊戲 - 動物研究院</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/game3.css">
+  <link rel="stylesheet" href="../css/modal.css">
+  <link rel="stylesheet" href="../css/reward_display.css">
+  <link rel="stylesheet" href="../css/achievement_notification.css">
+  <link rel="stylesheet" href="../css/game_animal_reward.css">
+</head>
+<body>
+  <div class="hp-container">
+    <!-- 頂部區域 -->
+    <div class="hp-top-area">
+      <div class="hp-top-left">
+        <div class="hp-title">動物研究院</div>
+        <div class="control-button">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="hp-top-right">
+        <div class="player-info">研究點數: 0</div>
+        <button class="back-button" onclick="window.location.href='map.html'">返回地圖</button>
+      </div>
+    </div>
+    
+    <!-- 主要內容區域 -->
+    <div class="g3-main-content">
+      <!-- 中心內容區 -->
+      <div class="g3-center-content">
+        <!-- 關卡標題 -->
+        <div class="g3-level-title">
+          <h1>第三關：迷宮探險</h1>
+          <p>幫助小動物走出迷宮！</p>
+        </div>
+        
+        <!-- 遊戲容器 -->
+        <div class="g3-game-container">
+          <div class="g3-maze-container" id="mazeContainer">
+            <div class="g3-maze" id="maze"></div>
+            <div class="g3-player" id="player">🐾</div>
+          </div>
+          
+          <div class="g3-right-panel">
+            <div class="g3-controls">
+              <div class="g3-control-pad">
+                <div class="g3-control-button empty"></div>
+                <button class="g3-control-button" id="upButton">⬆️</button>
+                <div class="g3-control-button empty"></div>
+                <button class="g3-control-button" id="leftButton">⬅️</button>
+                <div class="g3-control-button empty"></div>
+                <button class="g3-control-button" id="rightButton">➡️</button>
+                <div class="g3-control-button empty"></div>
+                <button class="g3-control-button" id="downButton">⬇️</button>
+                <div class="g3-control-button empty"></div>
+              </div>
+            </div>
+            
+            <div class="g3-timer-container">
+              <div class="g3-steps-counter" id="stepsCounter">步數: 0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+  .g3-game-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  
+  .g3-right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  </style>
+  
+  <!-- 遊戲完成彈出視窗 -->
+  <div class="modal" id="completeModal">
+    <div class="modal-content">
+      <div class="modal-icon">🏆</div>
+      <div class="modal-title">迷宮完成！</div>
+      <div class="modal-message" id="completeMessage">你獲得了50研究點數！</div>
+      <button class="modal-button">下一個</button>
+    </div>
+  </div>
+  
+
+  <script src="../js/achievement_system.js"></script>
+  <script src="../js/game_progress.js"></script>
+  <script src="../js/animal_collect.js"></script>
+  <script src="../js/item-reward-system.js"></script>
+  <script src="../js/game3.js"></script>
+  
+
+</body>
+</html>

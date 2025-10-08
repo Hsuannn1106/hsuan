@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>除錯工具 - 動物研究院</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .debug-container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .debug-button {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    .debug-button:hover {
+      background: #45a049;
+    }
+    
+    .debug-button.danger {
+      background: #f44336;
+    }
+    
+    .debug-button.danger:hover {
+      background: #da190b;
+    }
+    
+    .progress-info {
+      background: #f0f8ff;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="debug-container">
+    <h1>除錯工具</h1>
+    
+    <div class="progress-info" id="progressInfo">
+      載入中...
+    </div>
+    
+    <button class="debug-button" onclick="completeGame('game1')">完成第一關</button>
+    <button class="debug-button" onclick="completeGame('game2')">完成第二關</button>
+    <button class="debug-button" onclick="completeGame('game3')">完成第三關</button>
+    
+    <button class="debug-button danger" onclick="resetProgress()">重置所有進度</button>
+    
+    <button class="debug-button" onclick="goToMap()">返回地圖</button>
+  </div>
+  
+  <script src="../js/game_progress.js"></script>
+  <script>
+    function updateProgressInfo() {
+      const info = document.getElementById('progressInfo');
+      const stats = gameProgressManager.getProgressStats();
+      const progress = gameProgressManager.progress;
+      
+      info.innerHTML = `
+        <h3>當前進度</h3>
+        <p>已完成遊戲: ${progress.completedGames.join(', ') || '無'}</p>
+        <p>已解鎖遊戲: ${progress.unlockedGames.join(', ')}</p>
+        <p>當前遊戲: ${progress.currentGame}</p>
+        <p>完成度: ${stats.completed}/${stats.total} (${stats.percentage}%)</p>
+      `;
+    }
+    
+    function completeGame(gameId) {
+      gameProgressManager.completeGame(gameId);
+      updateProgressInfo();
+      alert(`已完成 ${gameId}`);
+    }
+    
+    function resetProgress() {
+      if (confirm('確定要重置所有進度嗎？')) {
+        gameProgressManager.resetProgress();
+        updateProgressInfo();
+        alert('進度已重置');
+      }
+    }
+    
+    function goToMap() {
+      window.location.href = 'map.html';
+    }
+    
+    // 初始化
+    document.addEventListener('DOMContentLoaded', () => {
+      updateProgressInfo();
+    });
+  </script>
+</body>
+</html>

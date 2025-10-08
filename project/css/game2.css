@@ -1,0 +1,181 @@
+/* 找不同遊戲 */
+.g2-main-content {
+  flex: 1;
+  display: flex;
+  background-color: #FFF8DC;
+}
+
+.g2-center-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.g2-level-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.g2-level-title h1 {
+  color: #8B4513;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.g2-level-title p {
+  color: #A0522D;
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+
+.g2-game-container {
+  width: 90%;
+  max-width: 1000px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+.g2-images-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.g2-image-wrapper {
+  flex: 1;
+  position: relative;
+  border: 2px solid #FFE4B5;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.g2-image {
+  width: 100%;
+  height: 400px;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  position: relative;
+  cursor: pointer; /* 讓整個圖片區域顯示可點擊 */
+}
+
+.g2-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none; /* 防止圖片本身攔截點擊事件 */
+}
+
+.g2-difference-spot {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid #ff0000;
+  /*border: 3px solid #FF8C00;*/
+  background-color: rgba(255, 140, 0, 0.2);
+  transform: translate(-50%, -50%);
+  pointer-events: none; /* 圓圈本身不攔截點擊 */
+  z-index: 10;
+}
+
+.g2-difference-spot.found {
+  animation: foundAnimation 0.5s ease-out;
+}
+
+@keyframes foundAnimation {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+.g2-timer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 10px 15px;
+}
+
+.g2-timer {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #8B4513;
+}
+
+.g2-differences-counter {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #8B4513;
+}
+
+.g2-hint-button {
+  background-color: #FF8C00;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.g2-hint-button:hover {
+  background-color: #FFA500;
+}
+
+.g2-hint-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.g2-hint-count {
+  background-color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  margin-left: 5px;
+  color: #8B4513;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.g2-hint-animation {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(255, 140, 0, 0.5);
+  border: 2px solid #FF8C00;
+  animation: pulse 1s infinite;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 5;
+}

@@ -1,0 +1,71 @@
+.body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', '微軟正黑體', sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(255, 228, 196, 0.3), rgba(255, 228, 196, 0.3)), 
+              url('/api/placeholder/1920/1080') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title {
+    position: absolute;
+    top: 20%;
+    text-align: center;
+    color: #8B4513;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
+}
+
+.title-main {
+    font-size: 5rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.start-button {
+    padding: 1rem 3rem;
+    font-size: 1.8rem;
+    background-color: #FF8C00;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.top-left-controls {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+}
+
+.decorative-animals {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.animal {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 222, 173, 0.8);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+}
