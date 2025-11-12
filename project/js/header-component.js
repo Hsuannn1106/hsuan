@@ -2,7 +2,7 @@
 function createHeaderComponent(options = {}) {
   const {
     title = '動物研究院',
-    points = '0',
+    points = window.pointsManager ? window.pointsManager.getPoints() : '0',
     showSound = true,
     showInfo = true,
     showSettings = true

@@ -3,6 +3,7 @@
   flex: 1;
   display: flex;
   background-color: #FFF8DC;
+  overflow-y: auto;
 }
 
 /* 中央內容 */
@@ -11,8 +12,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 20px;
+  min-height: 100%;
 }
 
 /* 關卡標題 */
@@ -35,16 +37,15 @@
 
 .g1-connection-container {
   position: relative;
-  width: 800px;
-  max-width: 90%;
+  width: 100%;
+  max-width: 800px;
 }
 
 /* 連線 */
 .matching-game {
   display: flex;
   justify-content: space-between;
-  width: 800px;
-  max-width: 90%;
+  width: 100%;
   background-color: white;
   border-radius: 15px;
   padding: 20px;
@@ -119,8 +120,8 @@
   border-radius: 10px;
   padding: 10px 15px;
   margin: 15px auto;
-  width: 800px;
-  max-width: 90%;
+  width: 100%;
+  max-width: 800px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -232,4 +233,45 @@
 
 .g1-restart-btn:active {
   background-color: #3d8b40;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .g1-center-content {
+    padding: 10px;
+  }
+  
+  .matching-game {
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px;
+  }
+  
+  .g1-animal-images, .g1-animal-names {
+    width: 100%;
+  }
+  
+  .g1-animal-item {
+    height: 60px;
+    font-size: 0.9rem;
+  }
+  
+  .g1-animal-image {
+    font-size: 1.5rem;
+  }
+  
+  .g1-animal-name {
+    font-size: 1.1rem;
+  }
+  
+  .g1-progress-bar {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  
+  .g1-progress-meter {
+    margin: 0;
+    width: 100%;
+  }
 }

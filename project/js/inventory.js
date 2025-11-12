@@ -91,6 +91,15 @@ document.addEventListener('DOMContentLoaded', function() {
   }, 100);
 });
 
+// 監聽localStorage變化，當inventory被清空時自動更新顯示
+window.addEventListener('storage', function(e) {
+  if (e.key === 'playerInventory') {
+    setTimeout(() => {
+      loadInventoryItems();
+    }, 100);
+  }
+});
+
 // 添加物品背包樣式
 function addInventoryStyles() {
   if (document.getElementById('inventory-locked-styles')) return;

@@ -115,7 +115,7 @@ class ItemRewardSystem {
           <p>共獲得 ${rewards.length} 個物品，已添加到背包中！</p>
         </div>
         
-        <button class="reward-close-btn" onclick="this.parentElement.parentElement.remove(); finishRewardFlow();">
+        <button class="reward-close-btn" onclick="this.parentElement.parentElement.remove(); showNextReward();">
           收下獎勵
         </button>
       </div>
@@ -293,6 +293,11 @@ class ItemRewardSystem {
       });
     });
     return result;
+  }
+  
+  clearInventory() {
+    this.inventory = {};
+    this.saveInventory();
   }
 }
 

@@ -1,5 +1,5 @@
         // 動物資料
-        const animals = [
+        window.animals = [
             {
                 id: 1,
                 name: "獅子",
@@ -257,7 +257,7 @@
                 const saved = localStorage.getItem('collectedAnimals');
                 if (saved) {
                     const collectedIds = JSON.parse(saved);
-                    animals.forEach(animal => {
+                    window.animals.forEach(animal => {
                         animal.collected = collectedIds.includes(animal.id);
                     });
                 }
@@ -268,17 +268,17 @@
                 const saved = localStorage.getItem('gameCollectedAnimals');
                 if (saved) {
                     const gameAnimals = JSON.parse(saved);
-                    let nextId = Math.max(...animals.map(a => a.id)) + 1;
+                    let nextId = Math.max(...window.animals.map(a => a.id)) + 1;
                     
                     gameAnimals.forEach(gameAnimal => {
                         // 檢查是否已存在相同名稱的動物
-                        const existingAnimal = animals.find(a => a.name === gameAnimal.name);
+                        const existingAnimal = window.animals.find(a => a.name === gameAnimal.name);
                         if (existingAnimal) {
                             existingAnimal.collected = true;
                         } else {
                             // 添加新動物
                             gameAnimal.id = nextId++;
-                            animals.push(gameAnimal);
+                            window.animals.push(gameAnimal);
                         }
                     });
                 }
@@ -286,13 +286,13 @@
             
             // 保存收集進度
             saveCollectedAnimals() {
-                const collectedIds = animals.filter(a => a.collected).map(a => a.id);
+                const collectedIds = window.animals.filter(a => a.collected).map(a => a.id);
                 localStorage.setItem('collectedAnimals', JSON.stringify(collectedIds));
             }
             
             // 隨機獲得動物圖鑑
             grantRandomAnimals(count) {
-                const uncollected = animals.filter(a => !a.collected);
+                const uncollected = window.animals.filter(a => !a.collected);
                 if (uncollected.length === 0) return [];
                 
                 const actualCount = Math.min(count, uncollected.length);
@@ -352,7 +352,7 @@
         }
         
         // 全域動物收集系統實例
-        const animalCollection = new AnimalCollectionSystem();
+        window.animalCollection = new AnimalCollectionSystem();
         
         // 初始化頁面
         function init() {
@@ -367,7 +367,9 @@
         // 渲染卡片
         function renderCards() {
             const grid = document.getElementById('cardsGrid');
-            const filteredAnimals = animals.filter(animal => {
+            if (!grid) return;
+            
+            const filteredAnimals = window.animals.filter(animal => {
                 const matchCategory = currentFilter === 'all' || animal.category === currentFilter;
                 const matchSearch = currentSearch === '' || animal.name.toLowerCase().includes(currentSearch.toLowerCase());
                 return matchCategory && matchSearch;
@@ -398,12 +400,15 @@
 
         // 更新進度
         function updateProgress() {
-            const collected = animals.filter(animal => animal.collected).length;
-            const total = animals.length;
+            const collected = window.animals.filter(animal => animal.collected).length;
+            const total = window.animals.length;
             const percentage = Math.round((collected / total) * 100);
             
-            document.getElementById('progressFill').style.width = percentage + '%';
-            document.getElementById('progressText').textContent = `已收集: ${collected}/${total} (${percentage}%)`;
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            
+            if (progressFill) progressFill.style.width = percentage + '%';
+            if (progressText) progressText.textContent = `已收集: ${collected}/${total} (${percentage}%)`;
         }
 
         // 綁定事件
@@ -419,15 +424,18 @@
             });
 
             // 搜尋事件
-            document.getElementById('searchInput').addEventListener('input', (e) => {
-                currentSearch = e.target.value;
-                renderCards();
-            });
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    currentSearch = e.target.value;
+                    renderCards();
+                });
+            }
         }
 
         // 開啟動物詳細資訊彈窗
         function openModal(animalId) {
-            const animal = animals.find(a => a.id === animalId);
+            const animal = window.animals.find(a => a.id === animalId);
             if (!animal || !animal.collected) return;
 
             document.getElementById('modalImage').textContent = animal.emoji;
@@ -455,17 +463,17 @@
         // 獲取當前顯示的動物
         function getCurrentAnimal() {
             const modalName = document.getElementById('modalName').textContent;
-            return animals.find(animal => animal.name === modalName);
+            return window.animals.find(animal => animal.name === modalName);
         }
 
         // 關卡完成後獲得動物獎勵（供遊戲調用）
         function grantGameReward(gameId) {
             const rewardCount = Math.floor(Math.random() * 3) + 2; // 隨機2-4隻動物
-            const newAnimals = animalCollection.grantRandomAnimals(rewardCount);
+            const newAnimals = window.animalCollection.grantRandomAnimals(rewardCount);
             
             if (newAnimals.length > 0) {
                 setTimeout(() => {
-                    animalCollection.showAnimalReward(newAnimals);
+                    window.animalCollection.showAnimalReward(newAnimals);
                     renderCards();
                     updateProgress();
                 }, 1000);
@@ -474,10 +482,10 @@
         
         // 收集新動物（供遊戲其他部分調用）
         function collectAnimal(animalId) {
-            const animal = animals.find(a => a.id === animalId);
+            const animal = window.animals.find(a => a.id === animalId);
             if (animal && !animal.collected) {
                 animal.collected = true;
-                animalCollection.saveCollectedAnimals();
+                window.animalCollection.saveCollectedAnimals();
                 renderCards();
                 updateProgress();
                 showAchievement(`🎉 恭喜收集到新動物：${animal.name}！`);
@@ -487,22 +495,34 @@
         // 顯示成就提示
         function showAchievement(text) {
             const popup = document.getElementById('achievementPopup');
-            document.getElementById('achievementText').textContent = text;
-            popup.classList.add('show');
+            const achievementText = document.getElementById('achievementText');
             
-            setTimeout(() => {
-                popup.classList.remove('show');
-            }, 3000);
+            if (popup && achievementText) {
+                achievementText.textContent = text;
+                popup.classList.add('show');
+                
+                setTimeout(() => {
+                    popup.classList.remove('show');
+                }, 3000);
+            }
         }
 
         // 點擊彈窗外部關閉
-        document.getElementById('animalModal').addEventListener('click', (e) => {
-            if (e.target.id === 'animalModal') {
-                closeModal();
-            }
-        });
+        const animalModal = document.getElementById('animalModal');
+        if (animalModal) {
+            animalModal.addEventListener('click', (e) => {
+                if (e.target.id === 'animalModal') {
+                    closeModal();
+                }
+            });
+        }
 
 
         
-        // 頁面載入完成後初始化
-        document.addEventListener('DOMContentLoaded', init);
+        // 頁面載入完成後初始化（只在動物圖鑑頁面）
+        document.addEventListener('DOMContentLoaded', function() {
+            // 檢查是否為動物圖鑑頁面
+            if (document.getElementById('cardsGrid')) {
+                init();
+            }
+        });

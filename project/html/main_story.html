@@ -27,9 +27,9 @@
         </div>
       </div>
       <div class="hp-top-right">
-       <div class="player-info">研究點數: 000</div>
+       <div class="player-info">金幣: 000</div>
 
-        <div class="control-button">  <!--設定icon-->
+        <div class="control-button" onclick="showSettingsModal()">  <!--設定icon-->
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="3"></circle>
             <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
@@ -54,7 +54,7 @@
           <span class="menu-icon">🐾</span>
           <span>探索地圖</span>
         </div>
-        <div class="menu-item">
+        <div class="menu-item" onclick="window.location.href='laboratory.html'">
           <span class="menu-icon">🧪</span>
           <span>研究實驗室</span>
         </div>
@@ -75,40 +75,118 @@
           
           <div class="story-chapter">
             <div class="chapter-title">
-              <span>第一章：研究院的開始</span>
-              <span class="chapter-status">已完成</span>
+              <span>第一章：動物認知訓練</span>
+              <span class="chapter-status completed">已完成</span>
             </div>
             <div class="chapter-content">
-              <p>歡迎來到動物研究院！你是一位新進的研究員，負責研究各種動物的生態和行為。</p>
+              <div class="story-text">
+                <p>🎓 歡迎來到動物研究院！作為新進研究員，你的第一項任務是通過<strong>動物連連看</strong>測試，證明你對各種動物的基本認知能力。</p>
+                <p>在這個訓練中，你需要：</p>
+                <ul>
+                  <li>🐯 正確識別老虎、大象、長頸鹿等15種動物</li>
+                  <li>🧠 將動物圖片與名稱進行精確配對</li>
+                  <li>⚡ 在限定時間內完成所有配對</li>
+                  <li>📚 學習每種動物的基本特徵</li>
+                </ul>
+                <p>完成這項訓練後，你將獲得進入森林區域的資格，並收集到第一批森林動物圖鑑。</p>
+                <p class="achievement-note">🏆 完成獎勵：基礎獎勵50點 + 動物知識獎勵25點 + 森林動物圖鑑2-4張 + 「動物識別專家」成就</p>
+                <div class="chapter-actions">
+                  <button class="play-button" data-game="game1">🎮 開始動物連連看</button>
+                </div>
+              </div>
             </div>
           </div>
           
           <div class="story-chapter">
             <div class="chapter-title">
-              <span>第二章：森林探險</span>
-              <span class="chapter-status">進行中</span>
+              <span>第二章：海洋觀察力測試</span>
+              <span class="chapter-status current">進行中</span>
             </div>
             <div class="chapter-content">
-              <p>你的第一個任務是前往附近的森林，研究當地的野生動物。</p>
+              <div class="story-text">
+                <p>🌊 通過基礎訓練後，你來到了海洋研究中心。這裡需要更敏銳的觀察力來發現海洋生物的細微差異。</p>
+                <p>你的任務是完成<strong>找不同遊戲</strong>：</p>
+                <ul>
+                  <li>🔍 在兩張相似的海洋場景圖中找出5-7處不同</li>
+                  <li>⏰ 在3分鐘內完成所有發現</li>
+                  <li>💡 合理使用3次提示機會</li>
+                  <li>🎯 訓練你的細節觀察能力</li>
+                </ul>
+                <p>優秀的表現將為你贏得額外的時間獎勵和觀察大師稱號。完成後可獲得珍貴的海洋動物圖鑑。</p>
+                <p class="achievement-note">🏆 預期獎勵：基礎獎勵50點 + 時間獎勵(最多18點) + 觀察大師獎勵30點 + 海洋動物圖鑑2-4張</p>
+                <div class="chapter-actions">
+                  <button class="play-button" data-game="game2">🔍 開始找不同遊戲</button>
+                </div>
+              </div>
             </div>
           </div>
           
           <div class="story-chapter">
             <div class="chapter-title">
-              <span>第三章：海洋之謎</span>
-              <span class="chapter-status">未解鎖</span>
+              <span>第三章：草原迷宮探險</span>
+              <span class="chapter-status locked">未解鎖</span>
             </div>
             <div class="chapter-content">
-              <p>完成森林探險後，你將前往海洋研究中心，探索海洋生物的奧秘。</p>
+              <div class="story-text">
+                <p>🦁 最後的挑戰將帶你進入非洲大草原的神秘迷宮。在這裡，你需要幫助迷路的小動物找到回家的路。</p>
+                <p><strong>迷宮探險</strong>任務包括：</p>
+                <ul>
+                  <li>🧭 在10x10的迷宮中找到正確路徑</li>
+                  <li>🐾 控制小動物角色安全到達終點</li>
+                  <li>⚡ 挑戰最少步數完成(20步內獲得完美獎勵)</li>
+                  <li>🏆 展現你的空間思維和規劃能力</li>
+                </ul>
+                <p>成功完成迷宮將證明你已具備獨立野外研究的能力，並獲得珍稀的草原動物圖鑑收藏。</p>
+                <p class="unlock-condition">🔒 解鎖條件：完成第二章海洋觀察力測試並獲得「觀察大師」成就</p>
+                <p class="achievement-note">🏆 預期獎勵：基礎獎勵50點 + 完美路線獎勵(50-100點) + 草原動物圖鑑2-4張 + 多項探險成就</p>
+                <div class="chapter-actions">
+                  <button class="play-button" data-game="game3">🧭 開始迷宮探險</button>
+                </div>
+              </div>
             </div>
           </div>
           
-          <button class="back-button" onclick="window.location.href='home_page.html'">返回主頁</button>
-        </div>
+          <div class="story-chapter">
+            <div class="chapter-title">
+              <span>第四章：高級研究項目</span>
+              <span class="chapter-status locked">未解鎖</span>
+            </div>
+            <div class="chapter-content">
+              <div class="story-text">
+                <p>🔬 完成三大基礎訓練後，你將進入高級研究階段，參與真實的野外科學考察項目。</p>
+                <p>這個階段將結合你在前三章學到的所有技能：動物識別、細節觀察和空間導航能力。</p>
+                <p class="unlock-condition">🔒 解鎖條件：完成前三章所有訓練並收集至少15種動物圖鑑</p>
+                <div class="chapter-actions">
+                  <button class="play-button" data-game="chapter4">🔬 開始高級研究</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="story-chapter">
+            <div class="chapter-title">
+              <span>終章：動物保護專家</span>
+              <span class="chapter-status locked">未解鎖</span>
+            </div>
+            <div class="chapter-content">
+              <div class="story-text">
+                <p>🌍 經過系統性的訓練，你已經掌握了動物研究的核心技能。現在是時候將這些知識應用到實際的動物保護工作中。</p>
+                <p>你將成為一名合格的動物保護專家，為維護生物多樣性貢獻自己的力量。</p>
+                <p class="unlock-condition">🔒 解鎖條件：完成所有訓練章節並獲得「動物研究大師」總成就</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="action-buttons">
+            <button class="back-button" onclick="window.location.href='home_page.html'">返回主頁</button>
       </div>
     </div>
   </div>
 
+  <script src="../js/points-manager.js"></script>
+  <script src="../js/achievement_system.js"></script>
+  <script src="../js/game_progress.js"></script>
+  <script src="../js/cards.js"></script>
   <script src="../js/menu_click.js"></script>
   <script src="../js/main_story.js"></script>
   

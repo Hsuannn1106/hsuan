@@ -61,36 +61,13 @@ class GameProgressManager {
       }
       
       this.saveProgress();
-      this.triggerAnimalReward(gameId);
       
       return true;
     }
     return false;
   }
   
-  triggerAnimalReward(gameId) {
-    const event = new CustomEvent('gameCompleted', {
-      detail: { gameId: gameId }
-    });
-    window.dispatchEvent(event);
-    
-    // 觸發隨機動物圖鑑獎勵
-    if (typeof window.animalRewardSystem !== 'undefined') {
-      setTimeout(() => {
-        window.animalRewardSystem.grantGameReward(gameId);
-      }, 500);
-    }
-    
-    this.triggerItemReward(gameId);
-  }
-  
-  triggerItemReward(gameId) {
-    if (typeof window.itemRewardSystem !== 'undefined') {
-      setTimeout(() => {
-        window.itemRewardSystem.grantGameCompletionReward(gameId);
-      }, 1500);
-    }
-  }
+
   
   isGameUnlocked(gameId) {
     return this.progress.unlockedGames.includes(gameId);
@@ -128,6 +105,17 @@ class GameProgressManager {
     this.saveProgress();
     
     localStorage.removeItem('collectedAnimals');
+    
+    if (window.itemRewardSystem) {
+      window.itemRewardSystem.clearInventory();
+    }
+    
+    if (window.achievementSystem) {
+      Object.keys(window.achievementSystem.achievements).forEach(key => {
+        window.achievementSystem.achievements[key].unlocked = false;
+      });
+      localStorage.removeItem('achievements_progress');
+    }
   }
 }
 

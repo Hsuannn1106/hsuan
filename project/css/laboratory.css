@@ -1,205 +1,286 @@
-    .lab-container {
-      width: 90%;
-      margin: 20px auto;
-      background-color: rgba(255, 248, 220, 0.9);
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    
-    .lab-title {
-      color: #8B4513;
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 1.8rem;
-    }
-    
-    .lab-sections {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      gap: 20px;
-    }
-    
-    .lab-section {
-      width: 45%;
-      background-color: white;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
-    }
-    
-    .section-title {
-      color: #8B4513;
-      margin-bottom: 15px;
-      font-size: 1.4rem;
-      border-bottom: 2px solid #FF8C00;
-      padding-bottom: 5px;
-    }
-    
-    .animal-habitat {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .habitat-preview {
-      width: 100%;
-      height: 200px;
-      background-color: #f0f0f0;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .habitat-bg {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 5rem;
-      background-color: #E6E6FA;
-    }
-    
-    .habitat-animals {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      width: 100%;
-      padding: 10px;
-    }
-    
-    .habitat-animal {
-      font-size: 2.5rem;
-      margin: 5px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-    
-    .habitat-animal:hover {
-      transform: scale(1.2);
-    }
-    
-    .decoration-items {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      margin-top: 15px;
-    }
-    
-    .decoration-item {
-      width: 60px;
-      height: 60px;
-      background-color: #f9f9f9;
-      border-radius: 8px;
-      margin: 5px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.8rem;
-      cursor: pointer;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: all 0.2s;
-    }
-    
-    .decoration-item:hover {
-      background-color: #FFE4B5;
-      transform: translateY(-5px);
-    }
-    
-    .animal-care {
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .animal-list {
-      display: flex;
-      overflow-x: auto;
-      padding: 10px 0;
-      margin-bottom: 15px;
-    }
-    
-    .animal-card {
-      min-width: 120px;
-      height: 150px;
-      background-color: #f9f9f9;
-      border-radius: 8px;
-      margin-right: 15px;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: all 0.2s;
-    }
-    
-    .animal-card:hover {
-      background-color: #FFE4B5;
-      transform: translateY(-5px);
-    }
-    
-    .animal-icon {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-    
-    .animal-name {
-      font-weight: bold;
-      color: #5D4037;
-      text-align: center;
-    }
-    
-    .animal-status {
-      width: 100%;
-      height: 5px;
-      background-color: #E6E6FA;
-      border-radius: 3px;
-      margin-top: 10px;
-      overflow: hidden;
-    }
-    
-    .status-fill {
-      height: 100%;
-      background-color: #FF8C00;
-      width: 70%;
-    }
-    
-    .care-actions {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 15px;
-    }
-    
-    .care-action {
-      background-color: #FF8C00;
-      color: white;
-      border: none;
-      border-radius: 20px;
-      padding: 8px 15px;
-      font-size: 0.9rem;
-      font-weight: bold;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      transition: all 0.2s;
-    }
-    
-    .care-action:hover {
-      background-color: #FFA500;
-      transform: scale(1.05);
-    }
-    
-    .action-icon {
-      margin-right: 5px;
-      font-size: 1.2rem;
-    }
+.lab-container {
+  display: flex;
+  height: 100%;
+  gap: 20px;
+}
+
+.lab-environment {
+  flex: 1;
+  background: linear-gradient(135deg, #e8f5e8 0%, #d4f1d4 100%);
+  border: 3px solid #8B4513;
+  border-radius: 15px;
+  position: relative;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.decoration-placed {
+  position: absolute;
+  font-size: 2em;
+  cursor: pointer;
+  pointer-events: all;
+  transition: transform 0.2s;
+}
+
+.decoration-placed:hover {
+  transform: scale(1.1);
+}
+
+.animal-display {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  max-width: 90%;
+}
+
+.animal-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.animal-sprite {
+  font-size: 3em;
+  cursor: pointer;
+  transition: transform 0.3s;
+  animation: idle 3s ease-in-out infinite;
+}
+
+.animal-sprite:hover {
+  transform: scale(1.1);
+}
+
+.animal-sprite.fed {
+  animation: happy 1s ease-in-out;
+}
+
+@keyframes idle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes happy {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.2) rotate(-5deg); }
+  75% { transform: scale(1.2) rotate(5deg); }
+}
+
+.animal-status {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 60px;
+}
+
+.hunger-bar, .happiness-bar {
+  height: 8px;
+  background: #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.hunger-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff6b6b, #ffa500);
+  transition: width 0.5s;
+}
+
+.happiness-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4ecdc4, #45b7d1);
+  transition: width 0.5s;
+}
+
+.right-panel {
+  width: 300px;
+  background: #f8f9fa;
+  border: 2px solid #8B4513;
+  border-radius: 10px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.panel-section {
+  margin-bottom: 30px;
+}
+
+.panel-section h3 {
+  color: #8B4513;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+.food-grid, .decoration-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.food-item, .decoration-item {
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.food-item:hover, .decoration-item:hover {
+  border-color: #8B4513;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.food-icon, .decoration-icon {
+  font-size: 2em;
+  margin-bottom: 5px;
+}
+
+.food-name, .decoration-name {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 3px;
+}
+
+.food-cost, .decoration-cost {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.lab-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9em;
+}
+
+.stat-bar {
+  flex: 1;
+  height: 10px;
+  background: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.stat-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4ecdc4, #45b7d1);
+  transition: width 0.5s;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 30px;
+  border-radius: 15px;
+  width: 300px;
+  text-align: center;
+  border: 3px solid #8B4513;
+}
+
+.animal-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.animal-option {
+  background: #f0f8ff;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1.1em;
+}
+
+.animal-option:hover {
+  border-color: #8B4513;
+  background: #e6f3ff;
+}
+
+.close-modal {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.close-modal:hover {
+  background: #c82333;
+}
+
+.no-food-message {
+  grid-column: 1 / -1;
+  background: #fff3cd;
+  border: 2px solid #ffeaa7;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  color: #856404;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.food-quantity {
+  color: #28a745;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #28a745;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  z-index: 1001;
+  animation: slideIn 0.3s ease-out;
+}
+
+.notification.error {
+  background: #dc3545;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}

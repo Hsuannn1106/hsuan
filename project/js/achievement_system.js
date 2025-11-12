@@ -152,19 +152,26 @@ class AchievementSystem {
     }
 
     updateResearchPoints(points) {
-        let currentPoints = parseInt(localStorage.getItem('research_points') || '0');
-        currentPoints += points;
-        
-        try {
-            localStorage.setItem('research_points', currentPoints.toString());
-        } catch (error) {
-            console.error('保存研究點數失敗:', error);
-        }
+        if (window.pointsManager) {
+            return window.pointsManager.addPoints(points);
+        } else {
+            let currentPoints = parseInt(localStorage.getItem('research_points') || '0');
+            currentPoints += points;
+            
+            try {
+                localStorage.setItem('research_points', currentPoints.toString());
+            } catch (error) {
+                console.error('保存研究點數失敗:', error);
+            }
 
-        return currentPoints;
+            return currentPoints;
+        }
     }
 
     getCurrentPoints() {
+        if (window.pointsManager) {
+            return window.pointsManager.getPoints();
+        }
         return parseInt(localStorage.getItem('research_points') || '0');
     }
 
@@ -174,7 +181,11 @@ class AchievementSystem {
         });
         
         localStorage.removeItem('achievements_progress');
-        localStorage.setItem('research_points', '0');
+        if (window.pointsManager) {
+            window.pointsManager.reset();
+        } else {
+            localStorage.setItem('research_points', '0');
+        }
         
         if (window.gameProgressManager) {
             window.gameProgressManager.resetProgress();

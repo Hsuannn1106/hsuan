@@ -2,43 +2,22 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <title>研究實驗室 - 動物研究院</title>
+  <title>動物研究院 - 研究實驗室</title>
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/laboratory.css">
 </head>
 <body>
   <div class="hp-container">
-    <!-- 頂部區域 -->
     <div class="hp-top-area">
       <div class="hp-top-left">
         <div class="hp-title">動物研究院</div>
-        <div class="control-button">  <!--聲音icon-->
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-          </svg>
-        </div>
-        <div class="control-button">  <!--資訊icon-->
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="8" x2="12" y2="12"></line>
-            <line x1="12" y1="16" x2="12.01" y2="16"></line>
-          </svg>
-        </div>
       </div>
       <div class="hp-top-right">
-        <div class="player-info">研究點數: 0</div>
-        <div class="control-button">  <!--設定icon-->
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="3"></circle>
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-          </svg>
-        </div>
+        <div class="player-info">研究點數: <span id="research-points">150</span></div>
+        <div class="player-info">金幣: <span id="coins">500</span></div>
       </div>
     </div>
     
-    <!-- 主要內容區域 -->
     <div class="hp-main-content">
       <!-- 左側菜單 -->
       <div class="left-menu">
@@ -66,117 +45,120 @@
           <span class="menu-icon">🎒</span>
           <span>物品背包</span>
         </div>
+        
+        <div class="action-buttons">
+          <button class="back-button" onclick="window.location.href='main_story.html'">返回主線</button>
+        </div>
       </div>
       
-      <!-- 中心內容區 -->
+      <!-- 中間內容 -->
       <div class="center-content">
-        <div class="page-container">
-          <h2 class="lab-title">研究實驗室</h2>
-          
-          <div class="lab-sections">
-            <!-- 動物棲息地裝飾 -->
-            <div class="lab-section">
-              <h3 class="section-title">動物棲息地裝飾</h3>
-              <div class="animal-habitat">
-                <div class="habitat-preview">
-                  <div class="habitat-bg">🌳</div>
-                  <div class="habitat-animals">
-                    <div class="habitat-animal">🦊</div>
-                    <div class="habitat-animal">🦝</div>
-                    <div class="habitat-animal">🐿️</div>
-                  </div>
-                </div>
-                
-                <div class="decoration-items">
-                  <div class="decoration-item">🌳</div>
-                  <div class="decoration-item">🌲</div>
-                  <div class="decoration-item">🌵</div>
-                  <div class="decoration-item">🌿</div>
-                  <div class="decoration-item">🍄</div>
-                  <div class="decoration-item">🪨</div>
-                  <div class="decoration-item">🏠</div>
-                  <div class="decoration-item">🪵</div>
-                </div>
-              </div>
-            </div>
+        <div class="lab-container">
+          <!-- 實驗室環境 -->
+          <div class="lab-environment" id="lab-environment">
+            <!-- 背景裝飾 -->
+            <div class="decoration" id="decoration-container"></div>
             
-            <!-- 動物養成 -->
-            <div class="lab-section">
-              <h3 class="section-title">動物養成</h3>
-              <div class="animal-care">
-                <div class="animal-list">
-                  <div class="animal-card">
-                    <div class="animal-icon">🦊</div>
-                    <div class="animal-name">小狐狸</div>
-                    <div class="animal-status">
-                      <div class="status-fill"></div>
-                    </div>
-                  </div>
-                  
-                  <div class="animal-card">
-                    <div class="animal-icon">🐼</div>
-                    <div class="animal-name">熊貓</div>
-                    <div class="animal-status">
-                      <div class="status-fill" style="width: 50%;"></div>
-                    </div>
-                  </div>
-                  
-                  <div class="animal-card">
-                    <div class="animal-icon">🦁</div>
-                    <div class="animal-name">獅子</div>
-                    <div class="animal-status">
-                      <div class="status-fill" style="width: 30%;"></div>
-                    </div>
-                  </div>
-                  
-                  <div class="animal-card">
-                    <div class="animal-icon">🐘</div>
-                    <div class="animal-name">大象</div>
-                    <div class="animal-status">
-                      <div class="status-fill" style="width: 90%;"></div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="care-actions">
-                  <button class="care-action">
-                    <span class="action-icon">🍎</span>餵食
-                  </button>
-                  <button class="care-action">
-                    <span class="action-icon">🧼</span>清潔
-                  </button>
-                  <button class="care-action">
-                    <span class="action-icon">🎮</span>遊戲
-                  </button>
-                  <button class="care-action">
-                    <span class="action-icon">💤</span>休息
-                  </button>
-                </div>
+            <!-- 動物展示區 -->
+            <div class="animal-display" id="animal-display">
+              <!-- 動物會根據收集情況動態載入 -->
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 右側控制面板 -->
+      <div class="right-panel">
+        <div class="panel-section">
+          <h3>🍎 餵食中心</h3>
+          <div class="food-grid">
+            <div class="food-item" data-food="apple" data-cost="10">
+              <div class="food-icon">🍎</div>
+              <div class="food-name">蘋果</div>
+              <div class="food-cost">10金幣</div>
+            </div>
+            <div class="food-item" data-food="carrot" data-cost="8">
+              <div class="food-icon">🥕</div>
+              <div class="food-name">胡蘿蔔</div>
+              <div class="food-cost">8金幣</div>
+            </div>
+            <div class="food-item" data-food="fish" data-cost="15">
+              <div class="food-icon">🐟</div>
+              <div class="food-name">魚</div>
+              <div class="food-cost">15金幣</div>
+            </div>
+            <div class="food-item" data-food="seeds" data-cost="5">
+              <div class="food-icon">🌰</div>
+              <div class="food-name">種子</div>
+              <div class="food-cost">5金幣</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="panel-section">
+          <h3>🎨 環境裝飾</h3>
+          <div class="decoration-grid">
+            <div class="decoration-item" data-decoration="tree" data-cost="50">
+              <div class="decoration-icon">🌳</div>
+              <div class="decoration-name">樹木</div>
+              <div class="decoration-cost">50金幣</div>
+            </div>
+            <div class="decoration-item" data-decoration="flower" data-cost="20">
+              <div class="decoration-icon">🌸</div>
+              <div class="decoration-name">花朵</div>
+              <div class="decoration-cost">20金幣</div>
+            </div>
+            <div class="decoration-item" data-decoration="rock" data-cost="30">
+              <div class="decoration-icon">🪨</div>
+              <div class="decoration-name">石頭</div>
+              <div class="decoration-cost">30金幣</div>
+            </div>
+            <div class="decoration-item" data-decoration="water" data-cost="80">
+              <div class="decoration-icon">💧</div>
+              <div class="decoration-name">水池</div>
+              <div class="decoration-cost">80金幣</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="panel-section">
+          <h3>📊 實驗室狀態</h3>
+          <div class="lab-stats">
+            <div class="stat-item">
+              <span>環境舒適度:</span>
+              <div class="stat-bar">
+                <div class="stat-fill" id="comfort-fill" style="width: 0%"></div>
               </div>
+              <span id="comfort-text">0%</span>
+            </div>
+            <div class="stat-item">
+              <span>動物滿意度:</span>
+              <div class="stat-bar">
+                <div class="stat-fill" id="satisfaction-fill" style="width: 0%"></div>
+              </div>
+              <span id="satisfaction-text">0%</span>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</body>
-  <script src="../js/achievement_system.js"></script>
-  <script src="../js/menu_click.js"></script>
+
+  <!-- 餵食模態框 -->
+  <div id="feeding-modal" class="modal">
+    <div class="modal-content">
+      <h3>選擇要餵食的動物</h3>
+      <div class="animal-selection" id="animal-selection">
+        <!-- 動物選項會動態載入 -->
+      </div>
+      <button class="close-modal">取消</button>
+    </div>
+  </div>
+
+  <script src="../js/points-manager.js"></script>
+  <script src="../js/item-reward-system.js"></script>
+  <script src="../js/cards.js"></script>
   <script src="../js/laboratory.js"></script>
-  
-  <script>
-    // 更新研究點數顯示
-    function updatePointsDisplay() {
-      const pointsElement = document.querySelector('.player-info');
-      if (pointsElement && typeof achievementSystem !== 'undefined') {
-        const currentPoints = achievementSystem.getCurrentPoints();
-        pointsElement.textContent = `研究點數: ${currentPoints}`;
-      }
-    }
-    
-    // 初始化時更新點數顯示
-    document.addEventListener('DOMContentLoaded', function() {
-      setTimeout(updatePointsDisplay, 100);
-    });
-  </script>
+  <script src="../js/menu_click.js"></script>
+</body>
 </html>

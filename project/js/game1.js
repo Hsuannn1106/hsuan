@@ -25,10 +25,18 @@ const totalPairs = 5;     //配對總數
 let currentAnimals = [];  //當前遊戲的動物
 
 // 獲取遊戲元素
-const connectionLines = document.querySelector('.g1-connection-lines');
-const progressValue = document.querySelector('.g1-progress-value');
-const progressText = document.querySelector('.g1-progress-text:first-child');
-const progressPercent = document.querySelector('.g1-progress-text:last-child');
+let connectionLines = null;
+let progressValue = null;
+let progressText = null;
+let progressPercent = null;
+
+// 初始化元素參照
+function initElements() {
+  connectionLines = document.querySelector('.g1-connection-lines');
+  progressValue = document.querySelector('.g1-progress-value');
+  progressText = document.querySelector('.g1-progress-text:first-child');
+  progressPercent = document.querySelector('.g1-progress-text:last-child');
+}
 
   // 聲音檔初始化
 const correctSound = new Audio('../audio/correct.mp3');
@@ -44,6 +52,8 @@ function playSound(sound) {
 
 // 檢查是否匹配
 function checkMatch() {
+  if (!selectedImage || !selectedName) return;
+  
   const imageAnimal = selectedImage.dataset.animal;
   const nameAnimal = selectedName.dataset.animal;
   
@@ -52,17 +62,18 @@ function checkMatch() {
     selectedImage.classList.add('matched');
     selectedName.classList.add('matched');
     
-    // 繪製連線
-    drawLine(selectedImage, selectedName);
+    // 保存引用以便繪線
+    const matchedImage = selectedImage;
+    const matchedName = selectedName;
+    
+    // 繪製連線（延遲以確保元素位置正確）
+    setTimeout(() => drawLine(matchedImage, matchedName), 50);
     
     playSound(correctSound);
 
     // 更新進度
     correctPairs++;
     updateProgress();
-    
-    // 顯示正確彈窗
-    //showModal('correctModal');
     
     // 如果所有配對都完成，顯示完成彈窗
     if (correctPairs === totalPairs) {
@@ -75,52 +86,82 @@ function checkMatch() {
     // 匹配失敗
     showModal('incorrectModal');
     playSound(wrongSound);
-
   }
   
   // 重置選擇
-  selectedImage.classList.remove('selected');
-  selectedName.classList.remove('selected');
+  if (selectedImage) selectedImage.classList.remove('selected');
+  if (selectedName) selectedName.classList.remove('selected');
   selectedImage = null;
   selectedName = null;
 }
 
 //畫連線
 function drawLine(image, name) {
+  if (!image || !name) return;
+  
+  const containerElement = document.querySelector('.g1-connection-container');
+  if (!containerElement) return;
+  
+  const containerRect = containerElement.getBoundingClientRect();
   const imageRect = image.getBoundingClientRect();
   const nameRect = name.getBoundingClientRect();
-  const containerRect = document.querySelector('.g1-connection-container').getBoundingClientRect();
   
-  const x1 = imageRect.right - containerRect.left;
-  const y1 = imageRect.top + imageRect.height / 2 - containerRect.top;
-  const x2 = nameRect.left - containerRect.left;
-  const y2 = nameRect.top + nameRect.height / 2 - containerRect.top;
+  const isMobile = window.innerWidth <= 768;
   
-  const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-  line.setAttribute('x1', x1);
-  line.setAttribute('y1', y1);
-  line.setAttribute('x2', x2);
-  line.setAttribute('y2', y2);
-  line.setAttribute('stroke', '#FF8C00');
-  line.setAttribute('stroke-width', '2');
+  let x1, y1, x2, y2;
   
-  connectionLines.appendChild(line);
+  if (isMobile) {
+    x1 = imageRect.left + imageRect.width / 2 - containerRect.left;
+    y1 = imageRect.bottom - containerRect.top;
+    x2 = nameRect.left + nameRect.width / 2 - containerRect.left;
+    y2 = nameRect.top - containerRect.top;
+  } else {
+    x1 = imageRect.right - containerRect.left;
+    y1 = imageRect.top + imageRect.height / 2 - containerRect.top;
+    x2 = nameRect.left - containerRect.left;
+    y2 = nameRect.top + nameRect.height / 2 - containerRect.top;
+  }
+  
+  const length = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+  const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+  
+  const line = document.createElement('div');
+  line.className = 'connection-line';
+  line.style.cssText = `
+    position: absolute;
+    left: ${x1}px;
+    top: ${y1}px;
+    width: ${length}px;
+    height: 4px;
+    background-color: #FF8C00;
+    transform-origin: 0 50%;
+    transform: rotate(${angle}deg);
+    z-index: 999;
+    pointer-events: none;
+    border-radius: 2px;
+  `;
+  
+  containerElement.appendChild(line);
 }
 
 // 更新進度
 function updateProgress() {
   const percent = (correctPairs / totalPairs) * 100;
-  progressValue.style.width = `${percent}%`;
-  progressText.textContent = `進度：${correctPairs}/${totalPairs}`;
-  progressPercent.textContent = `完成度：${percent}%`;
+  if (progressValue) progressValue.style.width = `${percent}%`;
+  if (progressText) progressText.textContent = `進度：${correctPairs}/${totalPairs}`;
+  if (progressPercent) progressPercent.textContent = `完成度：${percent}%`;
 }
 
 // 更新點數顯示
 function updatePointsDisplay() {
-  const pointsElement = document.querySelector('.player-info');
-  if (pointsElement && typeof achievementSystem !== 'undefined') {
-    const currentPoints = achievementSystem.getCurrentPoints();
-    pointsElement.textContent = `研究點數: ${currentPoints}`;
+  if (window.pointsManager) {
+    window.pointsManager.updateDisplay();
+  } else {
+    const pointsElement = document.querySelector('.player-info');
+    if (pointsElement && typeof achievementSystem !== 'undefined') {
+      const currentPoints = achievementSystem.getCurrentPoints();
+      pointsElement.textContent = `研究點數: ${currentPoints}`;
+    }
   }
 }
 
@@ -145,7 +186,12 @@ function processGameCompletion() {
   const totalPoints = basePoints + bonusPoints;
   
   // 更新研究點數
-  const newTotal = achievementSystem.updateResearchPoints(totalPoints);
+  let newTotal;
+  if (window.pointsManager) {
+    newTotal = window.pointsManager.addPoints(totalPoints);
+  } else {
+    newTotal = achievementSystem.updateResearchPoints(totalPoints);
+  }
   
   // 檢查成就
   const achievements = [];
@@ -291,7 +337,12 @@ function resetGameState() {
   correctPairs = 0;
   
   // 清空連線
-  connectionLines.innerHTML = '';
+  document.querySelectorAll('.connection-line').forEach(line => line.remove());
+  
+  // 移除所有選擇和匹配狀態
+  document.querySelectorAll('.g1-animal-item').forEach(item => {
+    item.classList.remove('selected', 'matched');
+  });
   
   // 重置進度
   updateProgress();
@@ -306,6 +357,7 @@ function restartGame() {
 
 // 初始化遊戲
 function initGame() {
+  initElements();
   updatePointsDisplay();
   generateGameContent();
   bindEvents();
@@ -315,6 +367,24 @@ function initGame() {
   if (restartBtn) {
     restartBtn.addEventListener('click', restartGame);
   }
+  
+  // 監聽視窗大小變化，重新繪製連線
+  window.addEventListener('resize', function() {
+    // 清除現有連線
+    document.querySelectorAll('.connection-line').forEach(line => line.remove());
+    
+    // 重新繪製已完成的連線
+    const matchedImages = document.querySelectorAll('.g1-animal-images .g1-animal-item.matched');
+    const matchedNames = document.querySelectorAll('.g1-animal-names .g1-animal-item.matched');
+    
+    matchedImages.forEach(image => {
+      const animalId = image.dataset.animal;
+      const matchedName = Array.from(matchedNames).find(name => name.dataset.animal === animalId);
+      if (matchedName) {
+        setTimeout(() => drawLine(image, matchedName), 100);
+      }
+    });
+  });
 }
 
 // 綁定事件
@@ -335,7 +405,7 @@ function bindEvents() {
       selectedImage = this;
       
       if (selectedName) {
-        checkMatch();
+        setTimeout(() => checkMatch(), 100);
       }
     });
   });
@@ -353,7 +423,7 @@ function bindEvents() {
       selectedName = this;
       
       if (selectedImage) {
-        checkMatch();
+        setTimeout(() => checkMatch(), 100);
       }
     });
   });
@@ -379,34 +449,12 @@ function initRewardFlow(gameId) {
 }
 
 function getAnimalRewardData(gameId) {
-  const forestAnimals = [
-    { id: 1, name: '老虎', emoji: '🐅' },
-    { id: 5, name: '熊貓', emoji: '🐼' },
-    { id: 9, name: '狐狸', emoji: '🦊' },
-    { id: 13, name: '兔子', emoji: '🐰' },
-    { id: 17, name: '猴子', emoji: '🐵' },
-    { id: 21, name: '松鼠', emoji: '🐿️' }
-  ];
-  
-  const rewardCount = Math.floor(Math.random() * 3) + 2;
-  const saved = localStorage.getItem('collectedAnimals');
-  const collected = saved ? JSON.parse(saved) : [];
-  const available = forestAnimals.filter(animal => !collected.includes(animal.id));
-  
-  if (available.length === 0) return [];
-  
-  const actualCount = Math.min(rewardCount, available.length);
-  const newAnimals = [];
-  
-  for (let i = 0; i < actualCount; i++) {
-    const randomIndex = Math.floor(Math.random() * available.length);
-    const animal = available.splice(randomIndex, 1)[0];
-    newAnimals.push(animal);
-    collected.push(animal.id);
+  // 使用統一的動物收集系統
+  if (typeof window.animalCollection !== 'undefined') {
+    const rewardCount = Math.floor(Math.random() * 3) + 2;
+    return window.animalCollection.grantRandomAnimals(rewardCount);
   }
-  
-  localStorage.setItem('collectedAnimals', JSON.stringify(collected));
-  return newAnimals;
+  return [];
 }
 
 function showNextReward() {
@@ -416,16 +464,29 @@ function showNextReward() {
     // 顯示動物獎勵
     showAnimalReward(rewardFlow.animalData);
   } else if (rewardFlow.step === 2) {
-    // 觸發物品獎勵
-    if (typeof gameProgressManager !== 'undefined') {
-      gameProgressManager.completeGame(rewardFlow.gameId);
-    }
+    // 顯示物品獎勵
+    showItemReward(rewardFlow.gameId);
+  } else if (rewardFlow.step === 3) {
+    // 完成所有獎勵流程
+    finishRewardFlow();
+  }
+}
+
+function showItemReward(gameId) {
+  if (typeof window.itemRewardSystem !== 'undefined') {
+    window.itemRewardSystem.grantGameCompletionReward(gameId);
+  } else {
+    showNextReward();
   }
 }
 
 function finishRewardFlow() {
-  // 所有獎勵顯示完成，跳轉到過渡頁面
-  window.location.href = 'story_transition.html?from=' + rewardFlow.gameId;
+  // 更新遊戲進度
+  if (typeof gameProgressManager !== 'undefined') {
+    gameProgressManager.completeGame(rewardFlow.gameId);
+  }
+  // 所有獎勵顯示完成，跳轉到主線劇情頁面
+  window.location.href = 'main_story.html?completed=' + rewardFlow.gameId;
 }
 
 // 顯示動物獎勵彈窗
@@ -441,13 +502,14 @@ function showAnimalReward(newAnimals) {
     <div class="reward-content">
       <div class="reward-header">
         <h2>🎉 獲得新動物圖鑑！</h2>
-        <p>恭喜完成關卡，獲得 ${newAnimals.length} 張動物圖鑑</p>
+        <p>恭喜完成森林關卡，獲得 ${newAnimals.length} 張動物圖鑑</p>
       </div>
       <div class="reward-animals">
         ${newAnimals.map(animal => `
           <div class="reward-animal">
             <div class="animal-emoji">${animal.emoji}</div>
             <div class="animal-name">${animal.name}</div>
+            <div class="animal-category">${getCategoryName(animal.category)}</div>
           </div>
         `).join('')}
       </div>
@@ -459,7 +521,22 @@ function showAnimalReward(newAnimals) {
   setTimeout(() => popup.classList.add('show'), 100);
 }
 
+function getCategoryName(category) {
+  const names = {
+    forest: '森林',
+    ocean: '海洋',
+    farm: '農場',
+    savanna: '草原'
+  };
+  return names[category] || '未知';
+}
+
 // 初始化遊戲
 initGame();
+
+// 防止頁面滾動時的問題
+window.addEventListener('scroll', function() {
+  // 重新計算連線位置（如果需要）
+});
 
 

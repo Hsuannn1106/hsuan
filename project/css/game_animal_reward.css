@@ -21,7 +21,8 @@
 }
 
 .reward-content {
-    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    /*background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);*/
+    background: linear-gradient(135deg, #FF7E5F 0%, #FF6A00 100%);
     border-radius: 20px;
     padding: 30px;
     max-width: 500px;
@@ -30,8 +31,10 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     transform: scale(0.8);
     transition: transform 0.3s ease;
-    border: 3px solid #FFD700;
+    /*border: 3px solid #FFD700;*/
+    border: 3px solid #FFC107;
 }
+
 
 .animal-reward-popup.show .reward-content {
     transform: scale(1);
@@ -94,8 +97,9 @@
 }
 
 .reward-close-btn {
-    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
-    color: white;
+    /*background: linear-gradient(45deg, #FF6B6B, #4ECDC4);*/
+    background: linear-gradient(45deg, #fbc7c7, #cbf3fb);
+    color: rgb(153, 153, 153);
     border: none;
     padding: 12px 30px;
     border-radius: 25px;
@@ -104,8 +108,24 @@
     cursor: pointer;
     margin-top: 20px;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+    box-shadow: 0 5px 15px rgba(252, 144, 144, 0.4);
 }
+/*下一個按鈕*/
+/*.reward-close-btn {
+    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+    background: linear-gradient(45deg, #fbc7c7, #cbf3fb);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(252, 144, 144, 0.4);
+}*/
+
 
 .reward-close-btn:hover {
     transform: translateY(-2px);

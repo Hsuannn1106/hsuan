@@ -23,7 +23,9 @@ class AnimalRewardSystem {
     
     // 隨機選擇獎勵動物
     selectRandomAnimals(count) {
-        const uncollected = animals.filter(a => !a.collected);
+        if (typeof window.animals === 'undefined') return [];
+        
+        const uncollected = window.animals.filter(a => !a.collected);
         if (uncollected.length === 0) return [];
         
         const actualCount = Math.min(count, uncollected.length);
@@ -36,7 +38,9 @@ class AnimalRewardSystem {
             selected.push(animal);
         }
         
-        animalCollection.saveCollectedAnimals();
+        if (typeof window.animalCollection !== 'undefined') {
+            window.animalCollection.saveCollectedAnimals();
+        }
         return selected;
     }
     
@@ -70,9 +74,9 @@ class AnimalRewardSystem {
                 
                 <div class="progress-section">
                     <div class="collection-progress">
-                        <span>圖鑑進度：${animals.filter(a => a.collected).length}/${animals.length}</span>
+                        <span>圖鑑進度：${window.animals ? window.animals.filter(a => a.collected).length : 0}/${window.animals ? window.animals.length : 0}</span>
                         <div class="progress-bar-mini">
-                            <div class="progress-fill-mini" style="width: ${(animals.filter(a => a.collected).length / animals.length * 100)}%"></div>
+                            <div class="progress-fill-mini" style="width: ${window.animals ? (window.animals.filter(a => a.collected).length / window.animals.length * 100) : 0}%"></div>
                         </div>
                     </div>
                 </div>
@@ -99,7 +103,9 @@ class AnimalRewardSystem {
     
     // 檢查里程碑成就
     checkMilestones() {
-        const collected = animals.filter(a => a.collected).length;
+        if (typeof window.animals === 'undefined') return;
+        
+        const collected = window.animals.filter(a => a.collected).length;
         const unlockedMilestones = JSON.parse(localStorage.getItem('unlockedMilestones') || '[]');
         
         this.milestones.forEach(milestone => {

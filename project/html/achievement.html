@@ -66,6 +66,10 @@
         <div class="menu-item">
           <span class="menu-icon">🎒</span>
           <span>物品背包</span>
+        
+        </div>
+                <div class="action-buttons">
+          <button class="back-button" onclick="window.location.href='main_story.html'">返回主線</button>
         </div>
       </div>
       
@@ -100,6 +104,7 @@
     </div>
   </div>
   
+  <script src="../js/points-manager.js"></script>
   <script src="../js/achievement_system.js"></script>
   <script src="../js/menu_click.js"></script>
   <script src="../js/achievement.js"></script>
@@ -111,9 +116,13 @@
       const currentPoints = achievementSystem.getCurrentPoints();
       
       // 更新研究點數顯示
-      const pointsElement = document.querySelector('.player-info');
-      if (pointsElement) {
-        pointsElement.textContent = `研究點數: ${currentPoints}`;
+      if (window.pointsManager) {
+        window.pointsManager.updateDisplay();
+      } else {
+        const pointsElement = document.querySelector('.player-info');
+        if (pointsElement) {
+          pointsElement.textContent = `研究點數: ${currentPoints}`;
+        }
       }
       
       // 更新統計資訊

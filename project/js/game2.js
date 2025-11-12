@@ -40,10 +40,14 @@ function initGame() {
 
 // 更新點數顯示
 function updatePointsDisplay() {
-  const pointsElement = document.querySelector('.player-info');
-  if (pointsElement && typeof achievementSystem !== 'undefined') {
-    const currentPoints = achievementSystem.getCurrentPoints();
-    pointsElement.textContent = `研究點數: ${currentPoints}`;
+  if (window.pointsManager) {
+    window.pointsManager.updateDisplay();
+  } else {
+    const pointsElement = document.querySelector('.player-info');
+    if (pointsElement && typeof achievementSystem !== 'undefined') {
+      const currentPoints = achievementSystem.getCurrentPoints();
+      pointsElement.textContent = `研究點數: ${currentPoints}`;
+    }
   }
 }
 
@@ -237,7 +241,12 @@ function processGameCompletion() {
   const totalPoints = basePoints + bonusPoints;
   
   // 更新研究點數
-  const newTotal = achievementSystem.updateResearchPoints(totalPoints);
+  let newTotal;
+  if (window.pointsManager) {
+    newTotal = window.pointsManager.addPoints(totalPoints);
+  } else {
+    newTotal = achievementSystem.updateResearchPoints(totalPoints);
+  }
   
   // 檢查成就
   const achievements = [];
@@ -364,50 +373,44 @@ function initRewardFlow(gameId) {
 }
 
 function getAnimalRewardData(gameId) {
-  const oceanAnimals = [
-    { id: 3, name: '企鵝', emoji: '🐧' },
-    { id: 6, name: '海豚', emoji: '🐬' },
-    { id: 10, name: '鯨魚', emoji: '🐳' },
-    { id: 14, name: '章魚', emoji: '🐙' },
-    { id: 18, name: '蟃蟹', emoji: '🦀' },
-    { id: 22, name: '海龜', emoji: '🐢' }
-  ];
-  
-  const rewardCount = Math.floor(Math.random() * 3) + 2;
-  const saved = localStorage.getItem('collectedAnimals');
-  const collected = saved ? JSON.parse(saved) : [];
-  const available = oceanAnimals.filter(animal => !collected.includes(animal.id));
-  
-  if (available.length === 0) return [];
-  
-  const actualCount = Math.min(rewardCount, available.length);
-  const newAnimals = [];
-  
-  for (let i = 0; i < actualCount; i++) {
-    const randomIndex = Math.floor(Math.random() * available.length);
-    const animal = available.splice(randomIndex, 1)[0];
-    newAnimals.push(animal);
-    collected.push(animal.id);
+  // 使用統一的動物收集系統
+  if (typeof window.animalCollection !== 'undefined') {
+    const rewardCount = Math.floor(Math.random() * 3) + 2;
+    return window.animalCollection.grantRandomAnimals(rewardCount);
   }
-  
-  localStorage.setItem('collectedAnimals', JSON.stringify(collected));
-  return newAnimals;
+  return [];
 }
 
 function showNextReward() {
   rewardFlow.step++;
   
   if (rewardFlow.step === 1) {
+    // 顯示動物獎勵
     showAnimalReward(rewardFlow.animalData);
   } else if (rewardFlow.step === 2) {
-    if (typeof gameProgressManager !== 'undefined') {
-      gameProgressManager.completeGame(rewardFlow.gameId);
-    }
+    // 顯示物品獎勵
+    showItemReward(rewardFlow.gameId);
+  } else if (rewardFlow.step === 3) {
+    // 完成所有獎勵流程
+    finishRewardFlow();
+  }
+}
+
+function showItemReward(gameId) {
+  if (typeof window.itemRewardSystem !== 'undefined') {
+    window.itemRewardSystem.grantGameCompletionReward(gameId);
+  } else {
+    showNextReward();
   }
 }
 
 function finishRewardFlow() {
-  window.location.href = 'story_transition.html?from=' + rewardFlow.gameId;
+  // 更新遊戲進度
+  if (typeof gameProgressManager !== 'undefined') {
+    gameProgressManager.completeGame(rewardFlow.gameId);
+  }
+  // 所有獎勵顯示完成，跳轉到主線劇情頁面
+  window.location.href = 'main_story.html?completed=' + rewardFlow.gameId;
 }
 
 function showAnimalReward(newAnimals) {
@@ -429,6 +432,7 @@ function showAnimalReward(newAnimals) {
           <div class="reward-animal">
             <div class="animal-emoji">${animal.emoji}</div>
             <div class="animal-name">${animal.name}</div>
+            <div class="animal-category">${getCategoryName(animal.category)}</div>
           </div>
         `).join('')}
       </div>
@@ -438,6 +442,16 @@ function showAnimalReward(newAnimals) {
   
   document.body.appendChild(popup);
   setTimeout(() => popup.classList.add('show'), 100);
+}
+
+function getCategoryName(category) {
+  const names = {
+    forest: '森林',
+    ocean: '海洋',
+    farm: '農場',
+    savanna: '草原'
+  };
+  return names[category] || '未知';
 }
 
 // 初始化遊戲
