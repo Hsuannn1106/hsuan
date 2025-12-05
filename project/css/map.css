@@ -5,20 +5,20 @@
       font-size: 1.8rem;
     }
     
+    
     .page-container .zones {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      gap: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      max-width: 800px;
+      margin: 0 auto;
     }
     
     .page-container .zone {
-      width: 300px;
       background-color: white;
       border-radius: 10px;
       padding: 20px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
       transition: transform 0.3s;
       position: relative;
     }
@@ -136,6 +136,10 @@
     .difficulty-badge.hard {
       background: #F44336;
     }
+
+    .difficulty-badge.expert {
+      background: #9C27B0;
+    }
     
     .time-estimate {
       color: #666;
@@ -227,3 +231,42 @@
     .reset-btn-corner:active {
       transform: scale(0.95);
     }
+
+    /* AI助手按鈕樣式 */
+    .ai-assistant-btn {
+      background: linear-gradient(135deg, #4CAF50, #66BB6A);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-right: 10px;
+      box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+    }
+    
+    .ai-assistant-btn:hover {
+      background: linear-gradient(135deg, #66BB6A, #81C784);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+    }
+    
+    .ai-assistant-btn:active {
+      transform: translateY(0);
+    }
+
+    /* 響應式設計 */
+    @media (max-width: 768px) {
+      .page-container .zones {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .ai-assistant-btn {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+      }
+    }
+

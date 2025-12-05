@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>動物研究院 - 圖卡收集館</title>
+    <title>動物學院 - 圖卡收集館</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animal_collect.css">
-    <link rel="stylesheet" href="../css/animal_reward.css"> 
+    <link rel="stylesheet" href="../css/animal_reward.css">
+    <link rel="stylesheet" href="../css/music-control.css"> 
 </head>
 <body>
   <div class="hp-container">
     <!-- 頂部區域 -->
     <div class="hp-top-area">
       <div class="hp-top-left">
-        <div class="hp-title">動物研究院</div>
-        <div class="control-button">  <!--聲音icon-->
+        <div class="hp-title">動物學院</div>
+        <div class="control-button music-toggle" onclick="toggleMusic()" title="音樂控制">  <!--聲音icon-->
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
             <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
@@ -116,7 +117,7 @@
             <button class="modal-close" onclick="closeModal()">&times;</button>
             <div class="modal-image" id="modalImage"></div>
             <h2 id="modalName"></h2>
-            <button class="sound-button" onclick="playAnimalSound()">🔊 聽聽我的叫聲</button>
+            <!--<button class="sound-button" onclick="playAnimalSound()">🔊 聽聽我的叫聲</button>-->
             <div class="animal-info" id="animalInfo"></div>
         </div>
     </div>
@@ -129,6 +130,8 @@
     </div>
   </div>
 
+  <script src="../js/bgm-manager.js"></script>
+  <script src="../js/auto-bgm.js"></script>
   <script src="../js/points-manager.js"></script>
   <script src="../js/game_progress.js"></script>
   <script src="../js/cards.js"></script>

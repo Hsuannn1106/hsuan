@@ -1,0 +1,282 @@
+/* Game 4 - 動物分類遊戲樣式 */
+
+/* 主要內容區域 */
+.g4-main-content {
+  flex: 1;
+  display: flex;
+  background-color: #FFF8DC;
+  overflow-y: auto;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* 左側面板 - 動物區域 */
+.g4-left-panel {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 右側面板 - 環境區域 */
+.g4-right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 關卡標題 */
+.g4-level-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.g4-level-title h1 {
+  color: #8B4513;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.g4-level-title p {
+  color: #A0522D;
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+
+/* 動物區域 */
+.g4-animals-section {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  border: 3px solid #FF8C00;
+}
+
+.g4-animals-section h3 {
+  color: #8B4513;
+  font-size: 1.3rem;
+  margin: 0 0 15px 0;
+  text-align: center;
+  border-bottom: 2px solid #FF8C00;
+  padding-bottom: 8px;
+}
+
+.g4-animals-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* 動物卡片 */
+.animal-card {
+  background: linear-gradient(135deg, #FFE4B5, #FFDAB9);
+  border: 2px solid #FF8C00;
+  border-radius: 6px;
+  padding: 4px 6px;
+  cursor: grab;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 5px rgba(255, 140, 0, 0.3);
+}
+
+.animal-card:hover {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 140, 0, 0.4);
+}
+
+.animal-card.dragging {
+  opacity: 0.7;
+  transform: rotate(5deg);
+}
+
+.animal-card.correct {
+  background: linear-gradient(135deg, #90EE90, #98FB98);
+  border-color: #4CAF50;
+}
+
+.animal-card.incorrect {
+  background: linear-gradient(135deg, #FFB6C1, #FFA0B4);
+  border-color: #f44336;
+  animation: shake 0.5s ease-in-out;
+}
+
+.animal-emoji {
+  font-size: 1.2rem;
+}
+
+.animal-name {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #8B4513;
+}
+
+/* 生態環境區域 */
+.g4-habitats-section {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+.g4-habitats-section h3 {
+  color: #8B4513;
+  font-size: 1.3rem;
+  margin: 0 0 20px 0;
+  text-align: center;
+  border-bottom: 2px solid #FF8C00;
+  padding-bottom: 8px;
+}
+
+.g4-habitats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 15px;
+}
+
+/* 環境區域 */
+.g4-habitat-zone {
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.g4-habitat-header {
+  background: linear-gradient(135deg, #F0F8FF, #E6F3FF);
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid #ddd;
+}
+
+.g4-habitat-icon {
+  font-size: 2rem;
+}
+
+.g4-habitat-info h4 {
+  margin: 0;
+  color: #2C5282;
+  font-size: 1.2rem;
+}
+
+.count {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: bold;
+}
+
+/* 放置區域 */
+.drop-zone {
+  min-height: 120px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.drop-zone.drag-over {
+  background-color: #E3F2FD;
+  border: 2px dashed #2196F3;
+}
+
+.drop-hint {
+  color: #999;
+  font-style: italic;
+  text-align: center;
+  margin: 0;
+}
+
+
+
+.btn {
+  background-color: #FF8C00;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #FFA500;
+  transform: scale(1.05);
+}
+
+/* 動畫效果 */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes successPop {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+@keyframes correctDrop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes incorrectShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes zoneSuccess {
+  0% { background-color: #f9f9f9; }
+  50% { background-color: #E8F5E8; }
+  100% { background-color: #f9f9f9; }
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-30px); opacity: 0; }
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .g4-main-content {
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .g4-left-panel {
+    width: 100%;
+    order: 2;
+  }
+  
+  .g4-right-panel {
+    order: 1;
+  }
+  
+  .g4-habitats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .g4-controls {
+    flex-direction: row;
+  }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>終章：動物保護專家 - 動物學院</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/finale.css">
+  <link rel="stylesheet" href="../css/music-control.css">
+</head>
+
+<body>
+  <div class="hp-container">
+    <div class="hp-top-area">
+      <div class="hp-top-left">
+        <div class="hp-title">動物學院</div>
+        <div class="control-button music-toggle" onclick="toggleMusic()" title="音樂控制">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="hp-top-right">
+        <div class="player-info">研究點數: 0</div>
+        <button class="back-button" onclick="window.location.href='map.html'">返回地圖</button>
+      </div>
+    </div>
+    
+    <div class="hp-main-content">
+      <div class="finale-main">
+      <div class="celebration-header">
+        <div class="trophy-animation">🏆</div>
+        <h1>恭喜！你已成為動物保護專家！</h1>
+        <p>你已經完成了所有的學習挑戰，獲得了豐富的動物知識</p>
+      </div>
+      
+      <div class="achievements-summary">
+        <div class="achievement-card">
+          <div class="achievement-icon">🌳</div>
+          <h3>森林探索者</h3>
+          <p>掌握了森林動物的知識</p>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-icon">🌊</div>
+          <h3>海洋觀察家</h3>
+          <p>學會了海洋生物的辨識</p>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-icon">🏔️</div>
+          <h3>山地冒險家</h3>
+          <p>征服了山地迷宮挑戰</p>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-icon">🔬</div>
+          <h3>生態分類專家</h3>
+          <p>精通動物生態分類學</p>
+        </div>
+      </div>
+      
+      <div class="final-stats">
+        <h2>你的學習成果</h2>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number" id="totalPoints">0</div>
+            <div class="stat-label">總研究點數</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" id="gamesCompleted">4</div>
+            <div class="stat-label">完成遊戲</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" id="animalsLearned">20+</div>
+            <div class="stat-label">學習動物</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="certificate">
+        <div class="certificate-border">
+          <h2>🎓 動物保護專家證書 🎓</h2>
+          <p>茲證明學習者已完成動物學院所有課程</p>
+          <p>具備動物保護專家資格</p>
+          <div class="certificate-date" id="certificateDate"></div>
+        </div>
+      </div>
+      
+      <div class="action-buttons">
+        <button class="finale-btn primary" onclick="window.location.href='main_story.html'">
+          📖 返回主線劇情
+        </button>
+        <button class="finale-btn secondary" onclick="window.location.href='animal_collect.html'">
+          🦊 動物圖鑑
+        </button>
+        <button class="finale-btn secondary" onclick="window.location.href='laboratory.html'">
+          🧪 研究實驗室
+        </button>
+        <button class="finale-btn" onclick="resetGame()" style="background: linear-gradient(135deg, #dc3545 0%, #c82333 100%); color: white;">
+          🔄 重置遊戲
+        </button>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <script src="../js/bgm-manager.js"></script>
+  <script src="../js/auto-bgm.js"></script>
+  <script src="../js/points-manager.js"></script>
+  <script src="../js/finale.js"></script>
+</body>
+</html>

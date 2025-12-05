@@ -1,0 +1,90 @@
+/* 通用音樂控制按鈕樣式 */
+
+/* 主頁面的音樂控制按鈕 */
+.music-control {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.music-btn {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.music-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+/* 通用音樂切換按鈕 */
+.music-toggle {
+  background: rgba(255, 140, 0, 0.1);
+  border: 2px solid #FF8C00;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #FF8C00;
+}
+
+.music-toggle:hover {
+  background: rgba(255, 140, 0, 0.2);
+  transform: scale(1.1);
+}
+
+.music-toggle:active {
+  transform: scale(0.95);
+}
+
+/* 遊戲頁面的音樂控制按鈕樣式 */
+.control-button.music-toggle {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.control-button.music-toggle:hover {
+  background-color: rgba(160, 82, 45, 0.1);
+  transform: scale(1.1);
+}
+
+.control-button.music-toggle:active {
+  transform: scale(0.95);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .music-control {
+    top: 15px;
+    right: 15px;
+  }
+  
+  .music-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+  
+  .music-toggle {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+}

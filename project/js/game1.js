@@ -14,7 +14,25 @@ const animalDatabase = [
   { id: 'deer', emoji: '🦌', name: '鹿' },
   { id: 'koala', emoji: '🐨', name: '無尾熊' },
   { id: 'kangaroo', emoji: '🦘', name: '袋鼠' },
-  { id: 'rhino', emoji: '🦏', name: '犀牛' }
+  { id: 'rhino', emoji: '🦏', name: '犀牛' },
+  { id: 'polarbear', emoji: '🐻‍❄️', name: '北極熊' },
+  { id: 'cat', emoji: '🐱', name: '貓' },
+  { id: 'dog', emoji: '🐶', name: '狗' },
+  { id: '', emoji: '🐹', name: '倉鼠' },
+  { id: '', emoji: '🫎', name: '麋鹿' },
+  { id: 'horse', emoji: '🐴', name: '馬' },
+  { id: 'chicken', emoji: '🐔', name: '雞' },
+  { id: 'frog', emoji: '🐸', name: '青蛙' },
+  { id: 'pig', emoji: '🐷', name: '豬' },
+  { id: 'cow', emoji: '🐮', name: '牛' },
+  { id: 'sheep', emoji: '🐑', name: '羊' },
+  { id: 'goat', emoji: '🐐', name: '山羊' },
+  { id: 'penguin', emoji: '🐧', name: '企鵝' },
+  { id: 'dolphin', emoji: '🐬', name: '海豚' },
+  { id: 'whale', emoji: '🐋', name: '鯨魚' },
+  { id: 'shark', emoji: '🦈', name: '鯊魚' },
+  { id: 'octopus', emoji: '🐙', name: '章魚' },
+  { id: 'crab', emoji: '🦀', name: '螃蟹' },
 ];
 
 // 連連看遊戲初始化
@@ -482,11 +500,11 @@ function showItemReward(gameId) {
 
 function finishRewardFlow() {
   // 更新遊戲進度
-  if (typeof gameProgressManager !== 'undefined') {
-    gameProgressManager.completeGame(rewardFlow.gameId);
+  if (typeof window.gameProgressManager !== 'undefined') {
+    window.gameProgressManager.completeGame('game1');
   }
   // 所有獎勵顯示完成，跳轉到主線劇情頁面
-  window.location.href = 'main_story.html?completed=' + rewardFlow.gameId;
+  window.location.href = 'main_story.html?completed=game1';
 }
 
 // 顯示動物獎勵彈窗

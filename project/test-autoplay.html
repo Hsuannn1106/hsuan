@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>自動播放測試 - 動物學院</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/music-control.css">
+</head>
+<body>
+  <div style="padding: 20px; text-align: center;">
+    <h1>🎵 背景音樂自動播放測試</h1>
+    <p>打開此頁面時，背景音樂應該會自動播放</p>
+    
+    <div style="margin: 20px;">
+      <button class="music-toggle" onclick="toggleMusic()" title="音樂控制">
+        🔊 音樂控制
+      </button>
+    </div>
+    
+    <div style="margin: 20px;">
+      <p>音樂狀態: <span id="status">檢查中...</span></p>
+      <p>自動播放嘗試: <span id="autoplay-status">等待中...</span></p>
+    </div>
+    
+    <div style="margin: 20px;">
+      <button onclick="window.location.href='html/index.html'">返回首頁</button>
+    </div>
+  </div>
+
+  <script src="js/bgm-manager.js"></script>
+  <script src="js/auto-bgm.js"></script>
+  
+  <script>
+    // 監控音樂狀態
+    function updateStatus() {
+      const statusEl = document.getElementById('status');
+      const autoplayEl = document.getElementById('autoplay-status');
+      
+      if (window.bgmManager) {
+        statusEl.textContent = window.bgmManager.isPlaying ? '播放中' : '已暫停';
+        autoplayEl.textContent = window.bgmManager.autoPlayAttempted ? '已嘗試' : '未嘗試';
+      } else {
+        statusEl.textContent = '管理器未載入';
+      }
+    }
+    
+    // 定期更新狀態
+    setInterval(updateStatus, 1000);
+    
+    // 頁面載入完成後立即檢查
+    document.addEventListener('DOMContentLoaded', updateStatus);
+  </script>
+</body>
+</html>

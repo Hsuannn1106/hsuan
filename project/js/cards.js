@@ -7,7 +7,6 @@
                 category: "savanna",
                 habitat: "非洲草原",
                 fact: "獅子是草原之王，雄獅的鬃毛越濃密代表越強壯！",
-                sound: "吼吼吼！",
                 collected: false
             },
             {
@@ -17,7 +16,6 @@
                 category: "forest",
                 habitat: "中國竹林",
                 fact: "熊貓一天要吃12-38公斤的竹子，超級能吃！",
-                sound: "嗯嗯嗯~",
                 collected: false
             },
             {
@@ -27,7 +25,6 @@
                 category: "ocean",
                 habitat: "南極地區",
                 fact: "企鵝走路搖搖擺擺很可愛，但在水中游泳超級快！",
-                sound: "嘎嘎嘎！",
                 collected: false
             },
             {
@@ -37,7 +34,6 @@
                 category: "farm",
                 habitat: "農場牧場",
                 fact: "小牛每天可以產出很多新鮮牛奶給大家喝！",
-                sound: "哞哞哞~",
                 collected: false
             },
             {
@@ -47,7 +43,6 @@
                 category: "forest",
                 habitat: "亞洲叢林",
                 fact: "老虎的條紋就像人類的指紋一樣，每隻都不同！",
-                sound: "嗷嗚嗷嗚！",
                 collected: false
             },
             {
@@ -57,7 +52,6 @@
                 category: "ocean",
                 habitat: "海洋",
                 fact: "海豚很聰明，會用聲音和同伴溝通！",
-                sound: "咿咿咿~",
                 collected: false
             },
             {
@@ -67,7 +61,6 @@
                 category: "farm",
                 habitat: "農場",
                 fact: "小豬其實很愛乾淨，只是喜歡在泥巴裡降溫！",
-                sound: "哼哼哼~",
                 collected: false
             },
             {
@@ -77,7 +70,6 @@
                 category: "savanna",
                 habitat: "非洲草原",
                 fact: "長頸鹿的舌頭有50公分長，可以吃到高高的樹葉！",
-                sound: "嗯嗯~",
                 collected: false
             },
             {
@@ -87,7 +79,6 @@
                 category: "forest",
                 habitat: "森林",
                 fact: "狐狸很聰明，會用各種策略來尋找食物！",
-                sound: "嗷嗷嗷~",
                 collected: false
             },
             {
@@ -97,7 +88,6 @@
                 category: "ocean",
                 habitat: "深海",
                 fact: "藍鯨是地球上最大的動物，心臟就像一輛小汽車那麼大！",
-                sound: "嗚嗚嗚~",
                 collected: false
             },
             {
@@ -107,7 +97,6 @@
                 category: "farm",
                 habitat: "農場草地",
                 fact: "小羊的毛毛很溫暖，可以做成毛衣保暖！",
-                sound: "咩咩咩~",
                 collected: false
             },
             {
@@ -117,7 +106,6 @@
                 category: "savanna",
                 habitat: "非洲草原",
                 fact: "大象用鼻子就像我們用手一樣，可以拿東西和打招呼！",
-                sound: "嗚嗚嗚！",
                 collected: false
             },
             {
@@ -127,7 +115,6 @@
                 category: "forest",
                 habitat: "森林草地",
                 fact: "兔子的耳朵很靈敏，可以聽到很遠的聲音！",
-                sound: "嗯嗯嗯~",
                 collected: false
             },
             {
@@ -137,7 +124,6 @@
                 category: "ocean",
                 habitat: "海底",
                 fact: "章魚有8隻觸手和3顆心臟，超級特別！",
-                sound: "咕嚕咕嚕~",
                 collected: false
             },
             {
@@ -147,7 +133,6 @@
                 category: "farm",
                 habitat: "農場",
                 fact: "小雞剛出生就會走路，真的很厲害！",
-                sound: "啾啾啾~",
                 collected: false
             },
             {
@@ -157,7 +142,6 @@
                 category: "savanna",
                 habitat: "非洲河流",
                 fact: "河馬看起來笨重，但游泳速度很快！",
-                sound: "哼哼哼！",
                 collected: false
             },
             {
@@ -167,7 +151,6 @@
                 category: "forest",
                 habitat: "熱帶森林",
                 fact: "猴子很會爬樹，可以在樹枝間快速跳躍！",
-                sound: "吱吱吱~",
                 collected: false
             },
             {
@@ -177,7 +160,6 @@
                 category: "ocean",
                 habitat: "海邊沙灘",
                 fact: "螃蟹橫著走路，鉗子很有力氣！",
-                sound: "卡卡卡~",
                 collected: false
             },
             {
@@ -187,7 +169,6 @@
                 category: "farm",
                 habitat: "農場池塘",
                 fact: "鴨子的腳有蹼，游泳很厲害！",
-                sound: "嘎嘎嘎~",
                 collected: false
             },
             {
@@ -197,7 +178,6 @@
                 category: "savanna",
                 habitat: "非洲草原",
                 fact: "斑馬的條紋可以迷惑敵人，是天然的保護色！",
-                sound: "嘶嘶嘶~",
                 collected: false
             },
             {
@@ -207,7 +187,6 @@
                 category: "forest",
                 habitat: "森林樹上",
                 fact: "松鼠會把堅果藏起來當冬天的食物！",
-                sound: "吱吱吱~",
                 collected: false
             },
             {
@@ -217,7 +196,6 @@
                 category: "ocean",
                 habitat: "海洋",
                 fact: "海龜可以活很久很久，有些超過100歲！",
-                sound: "嗯嗯嗯~",
                 collected: false
             },
             {
@@ -227,7 +205,6 @@
                 category: "farm",
                 habitat: "農場草地",
                 fact: "馬跑得很快，古時候是重要的交通工具！",
-                sound: "希律律~",
                 collected: false
             },
             {
@@ -237,9 +214,63 @@
                 category: "savanna",
                 habitat: "非洲草原",
                 fact: "犀牛的角很硬，是用來保護自己的！",
-                sound: "哼哼哼！",
+                collected: false
+            },
+            {
+                id: 25,
+                name: "狐狸貓頭鷹",
+                emoji: "🦉",
+                category: "forest",
+                habitat: "森林樹洞",
+                fact: "貓頭鷹的頭可以轉動超過270度，看東西非常厲害！",
+                collected: false
+            },
+            {
+                id: 26,
+                name: "無尾熊",
+                emoji: "🐨",
+                category: "forest",
+                habitat: "澳洲森林",
+                fact: "無尾熊每天睡超過18小時，是超會睡覺的小動物！",
+                collected: false
+            },
+            {
+                id: 27,
+                name: "鯊魚",
+                emoji: "🦈",
+                category: "ocean",
+                habitat: "深海",
+                fact: "鯊魚的嗅覺超靈敏，可以聞到很遠的味道！",
+                collected: false
+            },
+            {
+                id: 28,
+                name: "山羊",
+                emoji: "🐐",
+                category: "farm",
+                habitat: "農場丘陵",
+                fact: "山羊很會爬山，可以站在很斜的岩壁上！",
+                collected: false
+            },
+            {
+                id: 29,
+                name: "北極熊",
+                emoji: "🐻‍❄️",
+                category: "savanna",
+                habitat: "北極冰原",
+                fact: "北極熊的毛看起來白白的，其實是透明的喔！",
+                collected: false
+            },
+            {
+                id: 30,
+                name: "浣熊",
+                emoji: "🦝",
+                category: "forest",
+                habitat: "森林與河岸",
+                fact: "浣熊會用小手洗食物，看起來非常可愛！",
                 collected: false
             }
+
         ];
 
         let currentFilter = 'all';
@@ -455,10 +486,10 @@
         }
 
         // 播放動物叫聲
-        function playAnimalSound() {
+        /*function playAnimalSound() {
             // 這裡可以接入實際的音效播放功能
             alert('🔊 ' + getCurrentAnimal().sound);
-        }
+        }*/
 
         // 獲取當前顯示的動物
         function getCurrentAnimal() {

@@ -165,20 +165,26 @@ function generateProgressFromGameState() {
     progress.chapter3 = 'locked';
   }
   
-  // 第四章：高級研究項目
+  // 第四章：生態分類研究 (game4)
   const allGamesCompleted = ['game1', 'game2', 'game3'].every(game => 
     gameProgressManager.isGameCompleted(game)
   );
   const collectedAnimals = window.animals ? window.animals.filter(a => a.collected).length : 0;
   
-  if (allGamesCompleted && collectedAnimals >= 15) {
+  if (gameProgressManager.isGameCompleted('game4')) {
+    progress.chapter4 = 'completed';
+  } else if (allGamesCompleted && collectedAnimals >= 15) {
     progress.chapter4 = 'current';
   } else {
     progress.chapter4 = 'locked';
   }
   
   // 終章：動物保護專家
-  progress.final = 'locked'; // 暫時鎖定
+  if (gameProgressManager.isAllGamesComplete()) {
+    progress.final = 'current';
+  } else {
+    progress.final = 'locked';
+  }
   
   return progress;
 }
@@ -218,21 +224,22 @@ function updatePlayButtonState(button, status, chapterIndex) {
   
   if (status === 'locked') {
     button.disabled = true;
-    if (gameId === 'chapter4') {
-      button.textContent = '🔒 未解鎖';
-    } else {
-      button.textContent = '🔒 未解鎖';
-    }
+    button.textContent = '🔒 未解鎖';
   } else if (status === 'completed') {
     button.disabled = false;
-    button.textContent = '🔄 重新挑戰';
+    if (gameId === 'finale') {
+      button.textContent = '🏆 重新進入終章';
+    } else {
+      button.textContent = '🔄 重新挑戰';
+    }
   } else if (status === 'current') {
     button.disabled = false;
     const gameNames = {
       game1: '🎮 開始動物連連看',
       game2: '🔍 開始找不同遊戲',
       game3: '🧭 開始迷宮探險',
-      chapter4: '🔬 開始高級研究'
+      game4: '🔬 開始生態分類',
+      finale: '🏆 進入終章慶祝'
     };
     button.textContent = gameNames[gameId] || '🎮 開始遊戲';
   }
@@ -299,16 +306,59 @@ function checkGameCompletionRedirect() {
     const gameNames = {
       game1: '動物認知訓練',
       game2: '海洋觀察力測試',
-      game3: '草原迷宮探險'
+      game3: '草原迷宮探險',
+      game4: '生態分類研究'
     };
     
     setTimeout(() => {
       showCompletionMessage(fromGame, gameNames[fromGame] || '訓練');
+      
+      // 如果是game4完成，檢查是否解鎖終章
+      if (fromGame === 'game4' && gameProgressManager.isAllGamesComplete()) {
+        setTimeout(() => {
+          showFinaleUnlockedMessage();
+        }, 2000);
+      }
     }, 500);
     
     // 清除URL參數
     window.history.replaceState({}, document.title, window.location.pathname);
   }
+}
+
+// 顯示終章解鎖訊息
+function showFinaleUnlockedMessage() {
+  const message = document.createElement('div');
+  message.className = 'finale-unlock-modal';
+  message.innerHTML = `
+    <div class="modal-content">
+      <div class="modal-icon">🏆</div>
+      <div class="modal-title">終章解鎖！</div>
+      <div class="modal-message">
+        恭喜完成所有訓練！你已成為合格的動物保護專家！<br>
+        現在可以進入終章慶祝你的成就了！
+      </div>
+      <div class="modal-buttons">
+        <button class="modal-button primary" onclick="window.location.href='finale.html';">🎉 進入終章</button>
+        <button class="modal-button secondary" onclick="this.closest('.finale-unlock-modal').remove(); initializeStoryProgress();">稍後進入</button>
+      </div>
+    </div>
+  `;
+  
+  message.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  `;
+  
+  document.body.appendChild(message);
 }
 
 // 添加CSS動畫
@@ -473,12 +523,12 @@ function bindPlayButtonEvents() {
       const gameFiles = {
         game1: 'game1.html',
         game2: 'game2.html',
-        game3: 'game3.html'
+        game3: 'game3.html',
+        game4: 'game4.html',
+        finale: 'finale.html'
       };
       
-      if (gameId === 'chapter4') {
-        showChapter4Message();
-      } else if (gameFiles[gameId]) {
+      if (gameFiles[gameId]) {
         window.location.href = gameFiles[gameId];
       }
     });

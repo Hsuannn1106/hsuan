@@ -139,3 +139,60 @@
     border: 2px solid #4A148C;
     color: white;
 }
+
+/* 終章解鎖通知特殊樣式 */
+.finale-popup {
+    background: linear-gradient(135deg, #FFD700, #FF6B35, #FFD700) !important;
+    border: 3px solid #DAA520 !important;
+    animation: finaleGlow 1.5s ease-in-out infinite alternate, finalePulse 0.8s ease-in-out infinite !important;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 60px rgba(255, 107, 53, 0.6) !important;
+}
+
+.finale-popup .achievement-popup-icon {
+    font-size: 60px !important;
+    animation: finaleRotate 2s linear infinite, bounce 1s ease-in-out infinite !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.finale-popup .achievement-popup-title {
+    color: #B8860B !important;
+    font-size: 18px !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.finale-popup .achievement-popup-name {
+    color: #8B4513 !important;
+    font-size: 22px !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.finale-popup .achievement-popup-reward {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 2px solid #DAA520 !important;
+    color: #8B4513 !important;
+    font-weight: bold;
+}
+
+@keyframes finaleGlow {
+    0% { 
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 0 40px rgba(255, 107, 53, 0.4);
+        transform: scale(1);
+    }
+    100% { 
+        box-shadow: 0 0 40px rgba(255, 215, 0, 1), 0 0 80px rgba(255, 107, 53, 0.8);
+        transform: scale(1.02);
+    }
+}
+
+@keyframes finalePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes finaleRotate {
+    0% { transform: rotate(0deg) translateY(0); }
+    25% { transform: rotate(90deg) translateY(-5px); }
+    50% { transform: rotate(180deg) translateY(0); }
+    75% { transform: rotate(270deg) translateY(-5px); }
+    100% { transform: rotate(360deg) translateY(0); }
+}

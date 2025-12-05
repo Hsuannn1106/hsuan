@@ -1,15 +1,43 @@
-// 遊戲數據
-const differences = [
-  { left: { x: 65, y: 110 }, right: { x: 65, y: 110 } },
-  { left: { x: 150, y: 120 }, right: { x: 150, y: 120 } },
-  { left: { x: 180, y: 320 }, right: { x: 180, y: 320 } },
-  { left: { x: 350, y: 320 }, right: { x: 350, y: 320 } },
-  { left: { x: 375, y: 270 }, right: { x: 375, y: 270 } },
-  { left: { x: 385, y: 200 }, right: { x: 385, y: 200 } },
-  { left: { x: 70, y: 165 }, right: { x: 70, y: 165 } }
+// 多題目遊戲數據
+let questionsData = {
+  1: {
+    differences: [
+      { left: { x: 65, y: 110  }, right: { x: 65,  y: 110 } },//帽子
+      { left: { x: 150, y: 120 }, right: { x: 150, y: 120 } },//嘴巴裡葉子
+      { left: { x: 180, y: 320 }, right: { x: 180, y: 320 } },//樹上葉子
+      { left: { x: 350, y: 320 }, right: { x: 350, y: 320 } },//橘子
+      { left: { x: 375, y: 270 }, right: { x: 375, y: 270 } } //猴子嘴巴
+    ],
+    leftImage: '../images/pic1-1.png',
+    rightImage: '../images/pic1-2.png'
+  },
+  2: {
+    differences: [
+      { left: { x: 155, y: 140 }, right: { x: 155, y: 140 } },//鯨魚
+      { left: { x: 330, y: 140 }, right: { x: 330, y: 140 } },//海龜
+      { left: { x: 330, y: 300 }, right: { x: 330, y: 300 } },//海馬
+      { left: { x: 115, y: 330 }, right: { x: 115, y: 330 } },//小丑魚
+      { left: { x: 175, y: 380 }, right: { x: 175, y: 380 } } //海星
 
-];
+    ],
+    leftImage: '../images/pic2-1.png',
+    rightImage: '../images/pic2-2.png'
+  },
+  3: {
+    differences: [
+      { left: { x: 100, y: 140 }, right: { x: 100, y: 140 } },//長頸鹿
+      { left: { x: 140, y: 280 }, right: { x: 140, y: 280 } },//綿羊
+      { left: { x: 250, y: 15  }, right: { x: 250, y: 15  } },//太陽
+      { left: { x: 60,  y: 360 }, right: { x: 60,  y: 360 } },//棒棒糖
+      { left: { x: 330, y: 250 }, right: { x: 330, y: 250 } } //斑馬
 
+    ],
+    leftImage: '../images/pic3-1.png',
+    rightImage: '../images/pic3-2.png'
+  }
+};
+
+let currentQuestion = Math.floor(Math.random() * 3) + 1; // 隨機選擇1-3題
 let foundDifferences = 0;
 let hintsLeft = 3;
 let timeLeft = 180; // 3分鐘
@@ -17,14 +45,11 @@ let timerInterval;
 
 // 初始化遊戲
 function initGame() {
-  // 建立差異點
-  differences.forEach((diff, index) => {
-    createDifferenceSpot('leftImage', diff.left.x, diff.left.y, index);
-    createDifferenceSpot('rightImage', diff.right.x, diff.right.y, index);
-  });
+  // 更新圖片路徑
+  updateQuestionImages();
   
-  // 添加圖片點擊事件
-  addImageClickEvents();
+  // 載入當前題目
+  loadQuestion();
   
   // 更新計數器
   updateDifferencesCounter();
@@ -37,6 +62,39 @@ function initGame() {
   // 添加提示按鈕事件
   document.getElementById('hintButton').addEventListener('click', showHint);
 }
+
+
+
+// 更新題目圖片
+function updateQuestionImages() {
+  const questionData = questionsData[currentQuestion];
+  if (!questionData) return;
+  
+  // 更新左側圖片
+  const leftImg = document.querySelector('#leftImage img');
+  if (leftImg) leftImg.src = questionData.leftImage;
+  
+  // 更新右側圖片
+  const rightImg = document.querySelector('#rightImage img');
+  if (rightImg) rightImg.src = questionData.rightImage;
+}
+
+// 載入題目
+function loadQuestion() {
+  const questionData = questionsData[currentQuestion];
+  if (!questionData) return;
+  
+  // 建立差異點
+  questionData.differences.forEach((diff, index) => {
+    createDifferenceSpot('leftImage', diff.left.x, diff.left.y, index);
+    createDifferenceSpot('rightImage', diff.right.x, diff.right.y, index);
+  });
+  
+  // 添加圖片點擊事件
+  addImageClickEvents();
+}
+
+
 
 // 更新點數顯示
 function updatePointsDisplay() {
@@ -90,21 +148,21 @@ function addImageClickEvents() {
     
     if (clickedDifference !== -1) {
       // 點擊正確位置，顯示圓圈
-      const spot = document.querySelector(`.g2-difference-spot[data-index="${clickedDifference}"]`);
+      const spot = document.querySelector(`#rightImage .g2-difference-spot[data-index="${clickedDifference}"]`);
       if (!spot.classList.contains('found')) {
         revealDifference(clickedDifference);
       }
     }
-    // 如果點擊錯誤位置，什麼都不做（允許點擊但無反應）
   });
 }
 
 // 檢查點擊位置是否在差異點範圍內
 function checkClickPosition(clickX, clickY) {
   const tolerance = 25; // 點擊容錯範圍
+  const questionData = questionsData[currentQuestion];
   
-  for (let i = 0; i < differences.length; i++) {
-    const diff = differences[i].right;
+  for (let i = 0; i < questionData.differences.length; i++) {
+    const diff = questionData.differences[i].right;
     const distance = Math.sqrt(
       Math.pow(clickX - diff.x, 2) + Math.pow(clickY - diff.y, 2)
     );
@@ -119,7 +177,7 @@ function checkClickPosition(clickX, clickY) {
 
 // 顯示差異點
 function revealDifference(index) {
-  const spots = document.querySelectorAll(`.g2-difference-spot[data-index="${index}"]`);
+  const spots = document.querySelectorAll(`#leftImage .g2-difference-spot[data-index="${index}"], #rightImage .g2-difference-spot[data-index="${index}"]`);
   spots.forEach(spot => {
     spot.classList.add('found');
     spot.style.display = 'block'; // 顯示找到的圓圈
@@ -130,15 +188,17 @@ function revealDifference(index) {
   
   playSound(correctSound);
 
-  // 檢查是否完成遊戲
-  if (foundDifferences === differences.length) {
+  // 檢查是否完成當前題目
+  const questionData = questionsData[currentQuestion];
+  if (foundDifferences === questionData.differences.length) {
     gameComplete();
   }
 }
 
 // 更新差異計數器
 function updateDifferencesCounter() {
-  document.getElementById('differencesCounter').textContent = `找到: ${foundDifferences}/${differences.length}`;
+  const questionData = questionsData[currentQuestion];
+  document.getElementById('differencesCounter').textContent = `找到: ${foundDifferences}/${questionData.differences.length}`;
 }
 
 // 更新提示計數
@@ -153,8 +213,10 @@ function showHint() {
   
   // 找到一個未發現的差異
   const unfoundIndices = [];
-  differences.forEach((diff, index) => {
-    const spot = document.querySelector(`.g2-difference-spot[data-index="${index}"]`);
+  const questionData = questionsData[currentQuestion];
+  
+  questionData.differences.forEach((diff, index) => {
+    const spot = document.querySelector(`#rightImage .g2-difference-spot[data-index="${index}"]`);
     if (!spot.classList.contains('found')) {
       unfoundIndices.push(index);
     }
@@ -162,7 +224,7 @@ function showHint() {
   
   if (unfoundIndices.length > 0) {
     const randomIndex = unfoundIndices[Math.floor(Math.random() * unfoundIndices.length)];
-    const spot = document.querySelector(`.g2-difference-spot[data-index="${randomIndex}"]`);
+    const spot = document.querySelector(`#rightImage .g2-difference-spot[data-index="${randomIndex}"]`);
     
     // 創建提示動畫
     const hint = document.createElement('div');
@@ -172,7 +234,7 @@ function showHint() {
     
     spot.parentNode.appendChild(hint);
     
-    // 3秒後移除提示
+    // 5秒後移除提示
     setTimeout(() => {
       hint.remove();
     }, 5000); 
@@ -340,6 +402,39 @@ function gameFailed() {
   showModal('failModal');
 }
 
+// 重新開始遊戲
+function restartGame() {
+  // 清除當前題目的差異點
+  const spots = document.querySelectorAll('#leftImage .g2-difference-spot, #rightImage .g2-difference-spot');
+  spots.forEach(spot => spot.remove());
+  
+  // 隨機選擇新題目
+  currentQuestion = Math.floor(Math.random() * 3) + 1;
+  
+  // 重置遊戲狀態
+  foundDifferences = 0;
+  hintsLeft = 3;
+  timeLeft = 180;
+  
+  // 清除計時器
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+  
+  // 更新圖片路徑
+  updateQuestionImages();
+  
+  // 載入新題目
+  loadQuestion();
+  
+  // 更新計數器
+  updateDifferencesCounter();
+  updateHintCount();
+  
+  // 重新啟動計時器
+  startTimer();
+}
+
 // 顯示彈窗
 function showModal(modalId) {
   const modal = document.getElementById(modalId);
@@ -352,7 +447,7 @@ function showModal(modalId) {
     if (modalId === 'completeModal') {
       showNextReward();
     } else if (modalId === 'failModal') {
-      window.location.reload();
+      restartGame();
     }
   });
 }
@@ -406,11 +501,11 @@ function showItemReward(gameId) {
 
 function finishRewardFlow() {
   // 更新遊戲進度
-  if (typeof gameProgressManager !== 'undefined') {
-    gameProgressManager.completeGame(rewardFlow.gameId);
+  if (typeof window.gameProgressManager !== 'undefined') {
+    window.gameProgressManager.completeGame('game2');
   }
   // 所有獎勵顯示完成，跳轉到主線劇情頁面
-  window.location.href = 'main_story.html?completed=' + rewardFlow.gameId;
+  window.location.href = 'main_story.html?completed=game2';
 }
 
 function showAnimalReward(newAnimals) {
@@ -456,3 +551,8 @@ function getCategoryName(category) {
 
 // 初始化遊戲
 initGame();
+
+
+
+
+

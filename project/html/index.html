@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>動物學院 - AI學習助手</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/music-control.css">
+</head>
+<body>
+  <!-- 音樂控制按鈕 -->
+  <div class="music-control">
+    <button id="musicToggle" class="music-btn" onclick="toggleMusic()" title="音樂控制">
+      🔊
+    </button>
+  </div>
+  <div class="welcome-container">
+    <div class="welcome-content">
+      <div class="logo-section">
+        <div class="logo">🏫</div>
+        <h1 class="index-title">動物學院大冒險</h1>
+        <p class="subtitle">AI學習助手 - 遊戲化動物知識學習平台</p>
+      </div>
+      
+      <div class="entry-buttons">
+        <button class="entry-btn primary" onclick="window.location.href='main_story.html'">
+          🎮 開始遊戲
+        </button>
+        <!--<button class="entry-btn secondary" onclick="window.location.href='map.html'">
+          🗺️ 探索地圖
+        </button>
+        <button class="entry-btn secondary" onclick="window.location.href='main_story.html'">
+          📖 主線劇情
+        </button>-->
+      </div>
+      
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">🔗</div>
+          <div class="feature-text">動物連連看</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔍</div>
+          <div class="feature-text">找不同遊戲</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🕵️</div>
+          <div class="feature-text">迷宮探險</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../js/bgm-manager.js"></script>
+  <script src="../js/auto-bgm.js"></script>
+</body>
+</html>

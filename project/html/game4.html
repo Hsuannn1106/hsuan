@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>動物生態分類 - 動物學院</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/game4.css">
+  <link rel="stylesheet" href="../css/modal.css">
+  <link rel="stylesheet" href="../css/achievement_notification.css">
+  <link rel="stylesheet" href="../css/reward_display.css">
+  <link rel="stylesheet" href="../css/game_animal_reward.css">
+  <link rel="stylesheet" href="../css/music-control.css">
+</head>
+
+<body>
+  <div class="hp-container">
+    <!-- 頂部區域 -->
+    <div class="hp-top-area">
+      <div class="hp-top-left">
+        <div class="hp-title">動物學院</div>
+        <div class="control-button music-toggle" onclick="toggleMusic()" title="音樂控制">  <!--聲音icon-->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="hp-top-right">
+        <div class="player-info">研究點數: 0</div>
+        <button class="back-button" onclick="window.location.href='map.html'">返回地圖</button>
+      </div>
+    </div>
+    
+<!-- 主要內容區域 -->
+        <div class="g4-main-content">
+            <!-- 左側動物區域 -->
+            <div class="g4-left-panel">
+                <div class="g4-animals-section">
+                    <h3>🐾 待分類動物</h3>
+                    <div id="animals-container" class="g4-animals-container"></div>
+                </div>
+            </div>
+            
+            <!-- 右側環境區域 -->
+            <div class="g4-right-panel">
+                <div class="g4-level-title">
+                    <h1>第四關：動物生態分類</h1>
+                    <p>將動物拖拽到正確的生態環境中</p>
+                </div>
+                
+                <div class="g4-habitats-section">
+                    <h3>🌍 生態環境</h3>
+                    <div class="g4-habitats-grid">
+                        <!-- 森林環境 -->
+                        <div class="g4-habitat-zone">
+                            <div class="g4-habitat-header">
+                                <div class="g4-habitat-icon">🌲</div>
+                                <div class="g4-habitat-info">
+                                    <h4>森林</h4>
+                                    <span class="count">0/3</span>
+                                </div>
+                            </div>
+                            <div id="forest-zone" class="drop-zone">
+                                <p class="drop-hint">拖拽森林動物到這裡</p>
+                            </div>
+                        </div>
+
+                        <!-- 海洋環境 -->
+                        <div class="g4-habitat-zone">
+                            <div class="g4-habitat-header">
+                                <div class="g4-habitat-icon">🌊</div>
+                                <div class="g4-habitat-info">
+                                    <h4>海洋</h4>
+                                    <span class="count">0/2</span>
+                                </div>
+                            </div>
+                            <div id="ocean-zone" class="drop-zone">
+                                <p class="drop-hint">拖拽海洋動物到這裡</p>
+                            </div>
+                        </div>
+
+                        <!-- 草原環境 -->
+                        <div class="g4-habitat-zone">
+                            <div class="g4-habitat-header">
+                                <div class="g4-habitat-icon">🌾</div>
+                                <div class="g4-habitat-info">
+                                    <h4>草原</h4>
+                                    <span class="count">0/3</span>
+                                </div>
+                            </div>
+                            <div id="grassland-zone" class="drop-zone">
+                                <p class="drop-hint">拖拽草原動物到這裡</p>
+                            </div>
+                        </div>
+
+                        <!-- 極地環境 -->
+                        <div class="g4-habitat-zone">
+                            <div class="g4-habitat-header">
+                                <div class="g4-habitat-icon">❄️</div>
+                                <div class="g4-habitat-info">
+                                    <h4>極地</h4>
+                                    <span class="count">0/2</span>
+                                </div>
+                            </div>
+                            <div id="arctic-zone" class="drop-zone">
+                                <p class="drop-hint">拖拽極地動物到這裡</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- 遊戲完成彈出視窗 -->
+  <div class="modal" id="completeModal">
+    <div class="modal-content">
+      <div class="modal-icon">🏆</div>
+      <div class="modal-title">關卡完成！</div>
+      <div class="modal-message" id="completeMessage">你獲得了50研究點數和新的動物知識！</div>
+      <button class="modal-button">繼續</button>
+    </div>
+  </div>
+
+  <script src="../js/bgm-manager.js"></script>
+  <script src="../js/auto-bgm.js"></script>
+  <script src="../js/points-manager.js"></script>
+  <script src="../js/achievement_system.js"></script>
+  <script src="../js/item-reward-system.js"></script>
+  <script src="../js/game_progress.js"></script>
+  <script src="../js/cards.js"></script>
+  <script src="../js/animal_collect.js"></script>
+  <script src="../js/game4.js"></script>
+</body>
+</html>

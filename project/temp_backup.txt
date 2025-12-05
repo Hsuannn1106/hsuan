@@ -1,0 +1,4 @@
+AI files to be removed:
+- html/ai-tools.html
+- css/ai-tools-page.css  
+- css/ai-tools.css

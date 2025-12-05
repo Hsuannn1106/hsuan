@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <title>迷宮遊戲 - 動物研究院</title>
+  <title>迷宮遊戲 - 動物學院</title>
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/home.css">
   <link rel="stylesheet" href="../css/game3.css">
@@ -10,14 +10,15 @@
   <link rel="stylesheet" href="../css/reward_display.css">
   <link rel="stylesheet" href="../css/achievement_notification.css">
   <link rel="stylesheet" href="../css/game_animal_reward.css">
+  <link rel="stylesheet" href="../css/music-control.css">
 </head>
 <body>
   <div class="hp-container">
     <!-- 頂部區域 -->
     <div class="hp-top-area">
       <div class="hp-top-left">
-        <div class="hp-title">動物研究院</div>
-        <div class="control-button">
+        <div class="hp-title">動物學院</div>
+        <div class="control-button music-toggle" onclick="toggleMusic()" title="音樂控制">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
             <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
@@ -97,6 +98,8 @@
   </div>
   
 
+  <script src="../js/bgm-manager.js"></script>
+  <script src="../js/auto-bgm.js"></script>
   <script src="../js/points-manager.js"></script>
   <script src="../js/achievement_system.js"></script>
   <script src="../js/game_progress.js"></script>

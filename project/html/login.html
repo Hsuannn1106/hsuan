@@ -2,42 +2,47 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <title>登入 - 動物研究院</title>
+  <title>?�入 - ?�物學院</title>
   <link rel="stylesheet" href="../css/login.css">
   <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/music-control.css">
 </head>
 <body>
   <div class="container">
+    <div class="music-control">
+      <button class="music-btn" onclick="toggleMusic()" title="?��??�制">??</button>
+    </div>
     <div class="login-container">
       <div class="login-header">
-        <h1>動物研究院</h1>
-        <h2>會員登入</h2>
+        <h1>?�物學院</h1>
+        <h2>?�員?�入</h2>
       </div>
       
       <form class="login-form" id="loginForm">
         <div class="input-group">
-          <input type="text" id="username" placeholder="帳號" required>
+          <input type="text" id="username" placeholder="帳�?" required>
         </div>
         
         <div class="input-group">
           <input type="password" id="password" placeholder="密碼" required>
         </div>
         
-        <button type="submit" class="login-button">登入</button>
+        <button type="submit" class="login-button">?�入</button>
       </form>
       
       <div class="login-footer">
-        <button class="back-button" onclick="window.location.href='start.html'">返回</button>
+        <button class="back-button" onclick="window.location.href='start.html'">返�?</button>
       </div>
     </div>
     
     <div class="decorative-animals">
-      <div class="animal">🦊</div>
-      <div class="animal">🦁</div>
-      <div class="animal">🐼</div>
+      <div class="animal">??</div>
+      <div class="animal">??</div>
+      <div class="animal">?��</div>
     </div>
   </div>
 
+  <script src="../js/bgm-manager.js"></script>`n  <script src="../js/auto-bgm.js"></script>
   <script src="../js/login.js"></script>
 </body>
 </html>

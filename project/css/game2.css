@@ -31,6 +31,44 @@
   margin-top: 5px;
 }
 
+/* 題目選擇器 */
+.g2-question-selector {
+  display: none; /* 隨機出題模式下隱藏 */
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.g2-question-btn {
+  background-color: #f0f0f0;
+  color: #8B4513;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.g2-question-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.g2-question-btn.active {
+  background-color: #FF8C00;
+  color: white;
+  border-color: #FF8C00;
+}
+
+/* 題目內容容器 */
+.g2-question-content {
+  display: none;
+}
+
+.g2-question-content.active {
+  display: block;
+}
+
 .g2-game-container {
   width: 90%;
   max-width: 1000px;
@@ -178,4 +216,161 @@
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 5;
+}
+
+/* AI圖片生成按鈕 */
+.g2-ai-generate-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+}
+
+.g2-ai-generate-button:hover {
+  background-color: #45a049;
+  transform: translateY(-1px);
+}
+
+/* AI生成彈出視窗樣式 */
+.ai-generate-content {
+  margin: 20px 0;
+}
+
+.prompt-input-container,
+.ai-config-container {
+  margin-bottom: 15px;
+}
+
+.prompt-input-container label,
+.ai-config-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #8B4513;
+}
+
+#aiPrompt {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+#aiProvider {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: white;
+}
+
+.generate-status {
+  min-height: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.generate-status.loading {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.generate-status.success {
+  background-color: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.generate-status.error {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ffcdd2;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.modal-button.secondary {
+  background-color: #6c757d;
+}
+
+.modal-button.secondary:hover {
+  background-color: #5a6268;
+}
+
+/* API設定彈出視窗 */
+.api-config-content {
+  margin: 20px 0;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #8B4513;
+}
+
+#configApiType,
+#configApiKey {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+#configApiType {
+  background-color: white;
+}
+
+.api-help {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  padding: 15px;
+  margin-top: 15px;
+}
+
+.api-help p {
+  margin: 0 0 10px 0;
+  font-weight: bold;
+  color: #495057;
+}
+
+.api-help ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.api-help li {
+  margin-bottom: 5px;
+  color: #6c757d;
+}
+
+.api-help a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.api-help a:hover {
+  text-decoration: underline;
 }

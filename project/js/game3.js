@@ -472,11 +472,11 @@ function showItemReward(gameId) {
 
 function finishRewardFlow() {
   // 更新遊戲進度
-  if (typeof gameProgressManager !== 'undefined') {
-    gameProgressManager.completeGame(rewardFlow.gameId);
+  if (typeof window.gameProgressManager !== 'undefined') {
+    window.gameProgressManager.completeGame('game3');
   }
   // 所有獎勵顯示完成，跳轉到主線劇情頁面
-  window.location.href = 'main_story.html?completed=' + rewardFlow.gameId;
+  window.location.href = 'main_story.html?completed=game3';
 }
 
 function showAnimalReward(newAnimals) {

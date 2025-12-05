@@ -85,7 +85,8 @@ class ItemRewardSystem {
     const gameNames = { 
       game1: '森林區域', 
       game2: '海洋區域', 
-      game3: '山地區域' 
+      game3: '山地區域',
+      game4: '生態分類研究'
     };
     
     this.addRewardPopupStyles();

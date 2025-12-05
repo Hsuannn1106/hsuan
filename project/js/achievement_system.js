@@ -36,6 +36,33 @@ class AchievementSystem {
                 category: 'exploration',
                 reward: { points: 100, item: '探險徽章' },
                 unlocked: false
+            },
+            classification_first_complete: {
+                id: 'classification_first_complete',
+                title: '生態分類專家',
+                description: '首次完成生態分類研究',
+                icon: '🔬',
+                category: 'research',
+                reward: { points: 100, item: '研究證書' },
+                unlocked: false
+            },
+            perfect_classification: {
+                id: 'perfect_classification',
+                title: '完美分類學家',
+                description: '100%準確率完成生態分類',
+                icon: '🎯',
+                category: 'research',
+                reward: { points: 150, item: '完美徽章' },
+                unlocked: false
+            },
+            research_novice: {
+                id: 'research_novice',
+                title: '研究新手',
+                description: '累積獲得100研究點數',
+                icon: '📚',
+                category: 'progress',
+                reward: { points: 50, item: '研究筆記' },
+                unlocked: false
             }
         };
         
@@ -92,6 +119,15 @@ class AchievementSystem {
                 break;
             case 'maze_first_complete':
                 shouldUnlock = gameData.completed === true;
+                break;
+            case 'classification_first_complete':
+                shouldUnlock = gameData.completed && gameData.gameType === 'classification';
+                break;
+            case 'perfect_classification':
+                shouldUnlock = gameData.completed && gameData.gameType === 'classification' && gameData.accuracy === 100;
+                break;
+            case 'research_novice':
+                shouldUnlock = gameData.totalPoints >= 100;
                 break;
         }
 

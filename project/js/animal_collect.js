@@ -46,7 +46,7 @@ class AnimalRewardSystem {
     
     // 顯示隨機獎勵彈窗
     showRandomReward(gameId, newAnimals) {
-        const gameNames = { game1: '森林探索', game2: '海洋冒險', game3: '草原征程' };
+        const gameNames = { game1: '森林探索', game2: '海洋冒險', game3: '草原征程', game4: '生態分類研究' };
         
         const popup = document.createElement('div');
         popup.className = 'achievement-reward-popup';

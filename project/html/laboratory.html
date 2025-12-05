@@ -2,15 +2,17 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <title>動物研究院 - 研究實驗室</title>
+  <title>動物學院 - 研究實驗室</title>
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/laboratory.css">
+  <link rel="stylesheet" href="../css/music-control.css">
 </head>
 <body>
   <div class="hp-container">
     <div class="hp-top-area">
       <div class="hp-top-left">
-        <div class="hp-title">動物研究院</div>
+        <div class="hp-title">動物學院</div>
+        <button class="music-toggle" onclick="toggleMusic()" title="音樂控制">🔊</button>
       </div>
       <div class="hp-top-right">
         <div class="player-info">研究點數: <span id="research-points">150</span></div>
@@ -155,6 +157,8 @@
     </div>
   </div>
 
+  <script src="../js/bgm-manager.js"></script>
+  <script src="../js/auto-bgm.js"></script>
   <script src="../js/points-manager.js"></script>
   <script src="../js/item-reward-system.js"></script>
   <script src="../js/cards.js"></script>

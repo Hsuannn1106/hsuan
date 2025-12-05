@@ -2,15 +2,16 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <title>動物研究院</title>
+  <title>動物學院</title>
   <link rel="stylesheet" href="../css/start.css">
   <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/music-control.css">
   
 </head>
 <body>
   <div class="container">
     <div class="top-left-controls">
-      <div class="control-button">
+      <div class="control-button music-toggle" onclick="toggleMusic()" title="音樂控制">
         <!-- 聲音 icon -->
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
@@ -29,7 +30,7 @@
     </div>
 
     <div class="title">
-      <h1 class="title-main">動物研究院</h1>
+      <h1 class="title-main">動物學院</h1>
     </div>
 
     <button class="start-button" onclick="window.location.href='home_page.html'">開始遊戲</button><br>
@@ -45,6 +46,8 @@
     </div>
   </div>
 
+<script src="../js/bgm-manager.js"></script>
+<script src="../js/auto-bgm.js"></script>
 <script src="../js/start.js"></script>
 </body>
 </html>

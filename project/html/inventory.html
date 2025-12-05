@@ -2,17 +2,18 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <title>物品背包 - 動物研究院</title>
+  <title>物品背包 - 動物學院</title>
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/inventory.css">
+  <link rel="stylesheet" href="../css/music-control.css">
 </head>
 <body>
   <div class="hp-container">
-    <!-- 頂部區域 -->
+    <!-- 頂部區域-->
     <div class="hp-top-area">
       <div class="hp-top-left">
-        <div class="hp-title">動物研究院</div>
-        <div class="control-button">  <!--聲音icon-->
+        <div class="hp-title">動物學院</div>
+        <div class="control-button music-toggle" onclick="toggleMusic()" title="音樂控制">  <!--聲音icon-->
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
             <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
@@ -38,7 +39,7 @@
       </div>
     </div>
     
-    <!-- 主要內容區域 -->
+    <!-- 主要內容區域-->
     <div class="hp-main-content">
       <!-- 左側菜單 -->
       <div class="left-menu">
@@ -72,7 +73,7 @@
         </div>
       </div>
       
-      <!-- 中心內容區 -->
+      <!-- 中間內容區 -->
       <div class="center-content">
         <div class="page-container">
           <h2 class="inventory-title">物品背包</h2>
@@ -105,14 +106,14 @@
           
           <div class="inventory-grid">
             <!-- 食物道具 -->
-            <div class="item-slot" onclick="showItemDetails('蘋果', '食物', '普通', '一個新鮮的蘋果，可以餵食動物。', '恢復飢餓值：+10', '🍎')">
+            <div class="item-slot" onclick="showItemDetails('蘋果', '食物', '普通', '一個新鮮蘋果，可以餵食動物', '恢復飢餓值+10', '🍎')">
               <div class="item-icon">🍎</div>
               <div class="item-name">蘋果</div>
               <div class="item-rarity rarity-common">普通</div>
               <div class="item-quantity">3</div>
             </div>
             
-            <div class="item-slot" onclick="showItemDetails('香蕉', '食物', '普通', '一根香蕉，猴子的最愛。', '恢復飢餓值：+8', '🍌')">
+            <div class="item-slot" onclick="showItemDetails('香蕉', '食物', '普通', '一根黃色香蕉', '恢復飢餓值+8', '🍌')">
               <div class="item-icon">🍌</div>
               <div class="item-name">香蕉</div>
               <div class="item-rarity rarity-common">普通</div>
@@ -120,21 +121,21 @@
             </div>
             
             <!-- 裝飾道具 -->
-            <div class="item-slot" onclick="showItemDetails('樹木', '裝飾', '稀有', '一棵茂盛的樹木，可以放置在動物棲息地。', '增加環境舒適度：+15', '🌳')">
+            <div class="item-slot" onclick="showItemDetails('樹木', '裝飾', '稀有', '一棵綠色樹木，可以放置在動物棲息地', '增加環境舒適度+15', '🌳')">
               <div class="item-icon">🌳</div>
               <div class="item-name">樹木</div>
               <div class="item-rarity rarity-rare">稀有</div>
               <div class="item-quantity">1</div>
             </div>
             
-            <div class="item-slot" onclick="showItemDetails('小屋', '裝飾', '史詩', '一個精美的小屋，動物可以在裡面休息。', '增加環境舒適度：+25', '🏠')">
+            <div class="item-slot" onclick="showItemDetails('小屋', '裝飾', '史詩', '一個精美小屋，動物可以在裡面休息', '增加環境舒適度+25', '🏠')">
               <div class="item-icon">🏠</div>
               <div class="item-name">小屋</div>
-              <div class="item-rarity rarity-epic">稀有</div>
+              <div class="item-rarity rarity-epic">史詩</div>
               <div class="item-quantity">1</div>
             </div>
             
-            <div class="item-slot" onclick="showItemDetails('岩石', '裝飾', '普通', '一塊天然岩石，可以放置在動物棲息地。', '增加環境舒適度：+5', '🪨')">
+            <div class="item-slot" onclick="showItemDetails('岩石', '裝飾', '普通', '一塊天然岩石，可以放置在動物棲息地', '增加環境舒適度+5', '🪨')">
               <div class="item-icon">🪨</div>
               <div class="item-name">岩石</div>
               <div class="item-rarity rarity-common">普通</div>
@@ -142,28 +143,28 @@
             </div>
             
             <!-- 研究道具 -->
-            <div class="item-slot" onclick="showItemDetails('放大鏡', '研究', '稀有', '一個高品質的放大鏡，可以用來研究動物的細節。', '增加研究效率：+20%', '🔍')">
+            <div class="item-slot" onclick="showItemDetails('放大鏡', '研究', '稀有', '一個高品質放大鏡，可以用來研究動物細節', '增加研究效率+20%', '🔍')">
               <div class="item-icon">🔍</div>
               <div class="item-name">放大鏡</div>
               <div class="item-rarity rarity-rare">稀有</div>
               <div class="item-quantity">1</div>
             </div>
             
-            <div class="item-slot" onclick="showItemDetails('筆記本', '研究', '普通', '一本用來記錄研究筆記的本子。', '增加研究效率：+10%', '📓')">
+            <div class="item-slot" onclick="showItemDetails('筆記本', '研究', '普通', '一本用來記錄研究筆記的本子', '增加研究效率+10%', '📓')">
               <div class="item-icon">📓</div>
               <div class="item-name">筆記本</div>
               <div class="item-rarity rarity-common">普通</div>
               <div class="item-quantity">2</div>
             </div>
             
-            <div class="item-slot" onclick="showItemDetails('相機', '研究', '史詩', '一台高解析度相機，可以拍攝動物的照片。', '增加研究效率：+30%', '📷')">
+            <div class="item-slot" onclick="showItemDetails('相機', '研究', '史詩', '一台高精度相機，可以為動物拍照', '增加研究效率+30%', '📷')">
               <div class="item-icon">📷</div>
               <div class="item-name">相機</div>
-              <div class="item-rarity rarity-epic">稀少</div>
+              <div class="item-rarity rarity-epic">史詩</div>
               <div class="item-quantity">1</div>
             </div>
             
-            <!-- 空格子 -->
+            <!-- 空格子-->
             <div class="item-slot empty-slot">
               <span>+</span>
             </div>          
@@ -186,8 +187,8 @@
         <div class="modal-info">
           <div class="modal-name" id="modalName">蘋果</div>
           <div class="modal-rarity" id="modalRarity">類型：食物 | 稀有度：普通</div>
-          <div class="modal-description" id="modalDescription">一個新鮮的蘋果，可以餵食動物。</div>
-          <div class="modal-stats" id="modalStats">恢復飢餓值：+10</div>
+          <div class="modal-description" id="modalDescription">一個新鮮蘋果，可以餵食動物</div>
+          <div class="modal-stats" id="modalStats">恢復飢餓值+10</div>
         </div>
       </div>
       <div class="modal-actions">
@@ -197,6 +198,8 @@
     </div>
   </div>
   
+  <script src="../js/bgm-manager.js"></script>
+  <script src="../js/auto-bgm.js"></script>
   <script src="../js/points-manager.js"></script>
   <script src="../js/achievement_system.js"></script>
   <script src="../js/item-reward-system.js"></script>
@@ -217,7 +220,7 @@
       }
     }
     
-    // 初始化時更新點數顯示
+    // 頁面載入時更新點數顯示
     document.addEventListener('DOMContentLoaded', function() {
       setTimeout(updatePointsDisplay, 100);
     });
