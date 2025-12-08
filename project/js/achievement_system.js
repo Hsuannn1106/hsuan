@@ -25,7 +25,7 @@ class AchievementSystem {
                 description: '不使用提示完成找不同',
                 icon: '👁️',
                 category: 'observation',
-                reward: { points: 50, item: '鷹眼徽章' },
+                reward: { points: 100, item: '鷹眼徽章' },
                 unlocked: false
             },
             maze_first_complete: {
@@ -52,7 +52,7 @@ class AchievementSystem {
                 description: '100%準確率完成生態分類',
                 icon: '🎯',
                 category: 'research',
-                reward: { points: 150, item: '完美徽章' },
+                reward: { points: 100, item: '完美徽章' },
                 unlocked: false
             },
             research_novice: {
@@ -217,47 +217,7 @@ class AchievementSystem {
         });
         
         localStorage.removeItem('achievements_progress');
-        if (window.pointsManager) {
-            window.pointsManager.reset();
-        } else {
-            localStorage.setItem('research_points', '0');
-        }
-        
-        if (window.gameProgressManager) {
-            window.gameProgressManager.resetProgress();
-        }
-        
-        this.showResetNotification();
-    }
-
-    showResetNotification() {
-        const notification = document.createElement('div');
-        notification.className = 'achievement-notification';
-        notification.innerHTML = `
-            <div class="achievement-popup reset-popup">
-                <div class="achievement-popup-icon">🔄</div>
-                <div class="achievement-popup-content">
-                    <div class="achievement-popup-title">重置完成！</div>
-                    <div class="achievement-popup-name">所有成就已清空</div>
-                    <div class="achievement-popup-reward">
-                        研究點數已歸零，遊戲進度已重置
-                    </div>
-                </div>
-            </div>
-        `;
-
-        document.body.appendChild(notification);
-
-        setTimeout(() => notification.classList.add('show'), 100);
-        setTimeout(() => {
-            notification.classList.remove('show');
-            setTimeout(() => {
-                if (document.body.contains(notification)) {
-                    document.body.removeChild(notification);
-                }
-            }, 500);
-        }, 3000);
     }
 }
 
-const achievementSystem = new AchievementSystem();
+window.achievementSystem = new AchievementSystem();

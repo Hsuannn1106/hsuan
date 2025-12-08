@@ -27,12 +27,6 @@ function loadInventoryItems() {
     }
   });
   
-  // 添加空格子
-  const emptySlot = document.createElement('div');
-  emptySlot.className = 'item-slot empty-slot';
-  emptySlot.innerHTML = '<span>+</span>';
-  inventoryGrid.appendChild(emptySlot);
-  
   // 更新統計數據
   updateInventoryStats(ownedCount, foodCount, decorCount, researchCount);
 }
@@ -168,12 +162,6 @@ function addInventoryStyles() {
         const itemSlot = createItemSlot(item, item.quantity);
         inventoryGrid.appendChild(itemSlot);
       });
-      
-      // 添加空格子
-      const emptySlot = document.createElement('div');
-      emptySlot.className = 'item-slot empty-slot';
-      emptySlot.innerHTML = '<span>+</span>';
-      inventoryGrid.appendChild(emptySlot);
     }
     
     // 顯示物品詳情

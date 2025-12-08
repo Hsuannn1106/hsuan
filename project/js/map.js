@@ -26,42 +26,34 @@ class MapSystem {
     this.gameData = {
       game1: {
         id: 'game1',
-        name: '森林區域',
-        icon: '🌳',
-        description: '在這裡你可以探索森林中的各種動物，並通過連連看遊戲來學習牠們的名稱。',
+        name: '動物連連看',
+        icon: '🔗',
+        description: '在這裡你可以探索各種動物，並通過連連看遊戲來學習牠們的名稱',
         gameType: '連連看',
-        difficulty: 'easy',
-        estimatedTime: '5-10分鐘',
         htmlFile: 'game1.html'
       },
       game2: {
         id: 'game2',
-        name: '海洋區域',
-        icon: '🌊',
-        description: '探索海洋生物的奧秘，通過找不同遊戲來訓練你的觀察力。',
+        name: '找不同遊戲',
+        icon: '🔍',
+        description: '探索動物的奧秘，通過找不同遊戲來訓練你的觀察力',
         gameType: '找不同',
-        difficulty: 'medium',
-        estimatedTime: '8-15分鐘',
         htmlFile: 'game2.html'
       },
       game3: {
         id: 'game3',
-        name: '山地區域',
-        icon: '🏔️',
-        description: '穿越山地迷宮，尋找珍稀動物，並學習牠們的生存技能。',
+        name: '迷宮探險',
+        icon: '🕵️',
+        description: '穿越迷宮，找到出口',
         gameType: '迷宮',
-        difficulty: 'hard',
-        estimatedTime: '10-20分鐘',
         htmlFile: 'game3.html'
       },
       game4: {
         id: 'game4',
-        name: '研究實驗室',
-        icon: '🔬',
-        description: '進入研究實驗室，學習動物的生態分類，成為真正的動物學家。',
+        name: '動物生態分類',
+        icon: '🗂️',
+        description: '進入研究實驗室，學習動物的生態分類，成為真正的動物學家',
         gameType: '生態分類',
-        difficulty: 'expert',
-        estimatedTime: '15-25分鐘',
         htmlFile: 'game4.html'
       }
     };
@@ -127,11 +119,6 @@ class MapSystem {
       ${isCompleted ? '<div class="completion-badge">✅</div>' : ''}
       <h3>${game.name}</h3>
       <p>${game.description}</p>
-      
-      <div class="game-info">
-        <span class="difficulty-badge ${game.difficulty}">${this.getDifficultyText(game.difficulty)}</span>
-        <span class="time-estimate">⏱️ ${game.estimatedTime}</span>
-      </div>
     `;
     
     if (isCompleted) {
@@ -164,16 +151,6 @@ class MapSystem {
     return zone;
   }
   
-  getDifficultyText(difficulty) {
-    const difficultyMap = {
-      easy: '簡單',
-      medium: '中等',
-      hard: '困難',
-      expert: '專家',
-      finale: '完成'
-    };
-    return difficultyMap[difficulty] || difficulty;
-  }
   
   bindEvents() {
     const resetBtn = document.getElementById('reset-achievements');
@@ -197,6 +174,7 @@ class MapSystem {
           此操作將清空：<br>
           • 所有遊戲進度<br>
           • 收集的動物圖鑑<br>
+          • 獲得的成就<br>
           • 物品背包內容<br>
           • 研究點數和金幣<br><br>
           <strong>此操作無法復原，確定要繼續嗎？</strong>
@@ -232,6 +210,10 @@ class MapSystem {
     
     if (window.pointsManager) {
       window.pointsManager.reset();
+    }
+    
+    if (window.achievementSystem) {
+      window.achievementSystem.resetAllAchievements();
     }
     
     document.querySelectorAll('.confirm-modal').forEach(modal => modal.remove());

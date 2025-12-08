@@ -2,52 +2,61 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <title>動物學院</title>
-  <link rel="stylesheet" href="../css/start.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>動物學院 - 遊戲開始</title>
   <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/start.css">
   <link rel="stylesheet" href="../css/music-control.css">
-  
 </head>
 <body>
-  <div class="container">
-    <div class="top-left-controls">
-      <div class="control-button music-toggle" onclick="toggleMusic()" title="音樂控制">
-        <!-- 聲音 icon -->
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-        </svg>
+  <!-- 音樂控制按鈕 -->
+  <div class="music-control">
+    <button id="musicToggle" class="music-btn" onclick="toggleMusic()" title="音樂控制">
+      🔊
+    </button>
+  </div>
+  <div class="welcome-container">
+    <div class="welcome-content">
+      <div class="logo-section">
+        <div class="logo">🏫</div>
+        <h1 class="title">動物學院大冒險</h1>
+        <p class="subtitle">遊戲化動物知識學習平台</p>
       </div>
-      <div class="control-button">
-        <!-- 選單 icon -->
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
+      
+      <div class="entry-buttons">
+        <button class="entry-btn primary" onclick="window.location.href='main_story.html'">
+          🎮 開始遊戲
+        </button>
+        <!--<button class="entry-btn secondary" onclick="window.location.href='map.html'">
+          🗺️ 探索地圖
+        </button>
+        <button class="entry-btn secondary" onclick="window.location.href='main_story.html'">
+          📖 主線劇情
+        </button>-->
       </div>
-    </div>
-
-    <div class="title">
-      <h1 class="title-main">動物學院</h1>
-    </div>
-
-    <button class="start-button" onclick="window.location.href='home_page.html'">開始遊戲</button><br>
-    <button class="start-button" onclick="window.location.href='login.html'">登入</button>
-    
-
-    <div class="decorative-animals">
-      <div class="animal">🦊</div>
-      <div class="animal">🦁</div>
-      <div class="animal">🐼</div>
-      <div class="animal">🐘</div>
-      <div class="animal">🦒</div>
+      
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">🔗</div>
+          <div class="feature-text">動物連連看</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔍</div>
+          <div class="feature-text">找不同遊戲</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🕵️</div>
+          <div class="feature-text">迷宮探險</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🗂️</div>
+          <div class="feature-text">動物生態分類</div>
+        </div>
+      </div>
     </div>
   </div>
-
-<script src="../js/bgm-manager.js"></script>
-<script src="../js/auto-bgm.js"></script>
-<script src="../js/start.js"></script>
+  
+  <script src="../js/bgm-manager.js"></script>
+  <script src="../js/auto-bgm.js"></script>
 </body>
 </html>

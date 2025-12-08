@@ -141,16 +141,6 @@
       color: #FF6F00;
     }
     
-    .empty-slot {
-      background-color: #f9f9f9;
-      border: 2px dashed #ddd;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #aaa;
-      font-size: 1.5rem;
-    }
-    
     .item-modal {
       display: none;
       position: fixed;
