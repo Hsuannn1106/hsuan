@@ -93,6 +93,7 @@ function showResetConfirmModal() {
         此操作將清空：<br>
         • 所有遊戲進度<br>
         • 收集的動物圖鑑<br>
+        • 獲得的成就<br>
         • 物品背包內容<br>
         • 研究點數和金幣<br><br>
         <strong>此操作無法復原，確定要繼續嗎？</strong>
@@ -130,6 +131,10 @@ function executeReset() {
     window.pointsManager.reset();
   }
   
+  if (window.achievementSystem) {
+    window.achievementSystem.resetAllAchievements();
+  }
+  
   document.querySelectorAll('.confirm-modal').forEach(modal => modal.remove());
   
   const successModal = document.createElement('div');
@@ -138,7 +143,7 @@ function executeReset() {
     <div class="modal-content">
       <div class="modal-icon">✅</div>
       <div class="modal-title">重置完成</div>
-      <div class="modal-message">遊戲已重置，頁面將重新載入</div>
+      <div class="modal-message">遊戲已重置，即將返回開始頁面</div>
     </div>
   `;
   
@@ -158,7 +163,7 @@ function executeReset() {
   document.body.appendChild(successModal);
   
   setTimeout(() => {
-    window.location.reload();
+    window.location.href = 'start.html';
   }, 2000);
 }
 

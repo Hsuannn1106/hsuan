@@ -1,7 +1,5 @@
 class Laboratory {
   constructor() {
-    this.coins = window.pointsManager ? window.pointsManager.getCoins() : 500;
-    this.researchPoints = window.pointsManager ? window.pointsManager.getPoints() : 150;
     this.animals = {};
     this.decorations = [];
     this.selectedFood = null;
@@ -89,30 +87,26 @@ class Laboratory {
   }
 
   renderFoodItems() {
-    if (!window.itemRewardSystem) return;
-    
     const foodGrid = document.querySelector('.food-grid');
     if (!foodGrid) return;
     
+    const foods = [
+      { id: 'apple', icon: '🍎', name: '蘋果', cost: 10 },
+      { id: 'carrot', icon: '🥕', name: '胡蘿蔔', cost: 8 },
+      { id: 'fish', icon: '🐟', name: '魚', cost: 15 },
+      { id: 'seeds', icon: '🌰', name: '種子', cost: 5 }
+    ];
+    
     foodGrid.innerHTML = '';
-    
-    // 獲取背包中的食物
-    const allItems = window.itemRewardSystem.getAllItemsWithStatus();
-    const foodItems = allItems.filter(item => item.type === '食物' && item.owned);
-    
-    if (foodItems.length === 0) {
-      foodGrid.innerHTML = '<div class="no-food-message">背包中沒有食物道具<br>請先完成遊戲收集食物！</div>';
-      return;
-    }
-    
-    foodItems.forEach(item => {
+    foods.forEach(food => {
       const foodElement = document.createElement('div');
       foodElement.className = 'food-item';
-      foodElement.dataset.food = item.id;
+      foodElement.dataset.food = food.id;
+      foodElement.dataset.cost = food.cost;
       foodElement.innerHTML = `
-        <div class="food-icon">${item.icon}</div>
-        <div class="food-name">${item.name}</div>
-        <div class="food-quantity">數量: ${item.quantity}</div>
+        <div class="food-icon">${food.icon}</div>
+        <div class="food-name">${food.name}</div>
+        <div class="food-cost">${food.cost}點數</div>
       `;
       foodGrid.appendChild(foodElement);
     });
@@ -145,7 +139,8 @@ class Laboratory {
 
   bindAnimalEvents() {
     // 動物選擇事件
-    document.querySelectorAll('.animal-option').forEach(option => {
+    const animalOptions = document.querySelectorAll('.animal-option');
+    animalOptions.forEach(option => {
       option.addEventListener('click', (e) => this.feedAnimal(e));
     });
   }
@@ -153,20 +148,14 @@ class Laboratory {
   selectFood(e) {
     const foodItem = e.currentTarget;
     const foodType = foodItem.dataset.food;
+    const cost = parseInt(foodItem.dataset.cost);
     
-    // 檢查背包中是否有該食物
-    if (!window.itemRewardSystem) {
-      this.showNotification('物品系統未載入！', 'error');
-      return;
-    }
-    
-    const quantity = window.itemRewardSystem.getItemQuantity(foodType);
-    if (quantity <= 0) {
-      this.showNotification('背包中沒有這種食物！請先收集食物道具。', 'error');
+    if (!window.pointsManager.hasEnoughPoints(cost)) {
+      this.showNotification(`研究點數不足！需要${cost}點數`, 'error');
       return;
     }
 
-    this.selectedFood = { type: foodType, quantity: quantity };
+    this.selectedFood = { type: foodType, cost: cost };
     this.showFeedingModal();
   }
 
@@ -187,34 +176,37 @@ class Laboratory {
   feedAnimal(e) {
     const animalType = e.currentTarget.dataset.target;
     
-    if (!this.selectedFood) return;
+    if (!this.selectedFood || !animalType) return;
 
-    // 從背包中消耗食物
-    const currentQuantity = window.itemRewardSystem.getItemQuantity(this.selectedFood.type);
-    if (currentQuantity <= 0) {
-      this.showNotification('背包中沒有這種食物了！', 'error');
+    // 檢查點數是否足夠
+    if (!window.pointsManager.hasEnoughPoints(this.selectedFood.cost)) {
+      this.showNotification(`研究點數不足！需要${this.selectedFood.cost}點數`, 'error');
       this.closeModal();
       return;
     }
     
-    // 減少背包中的食物數量
-    window.itemRewardSystem.addItemToInventory(this.selectedFood.type, -1);
+    // 扣除研究點數
+    window.pointsManager.subtractPoints(this.selectedFood.cost);
     
     // 增加動物飽食度和快樂度
-    const hungerIncrease = this.getFoodEffect(this.selectedFood.type, animalType);
-    this.animals[animalType].hunger = Math.min(100, this.animals[animalType].hunger + hungerIncrease);
-    this.animals[animalType].happiness = Math.min(100, this.animals[animalType].happiness + 10);
+    if (this.animals[animalType]) {
+      const hungerIncrease = this.getFoodEffect(this.selectedFood.type, animalType);
+      this.animals[animalType].hunger = Math.min(100, this.animals[animalType].hunger + hungerIncrease);
+      this.animals[animalType].happiness = Math.min(100, this.animals[animalType].happiness + 10);
+    }
 
     // 動畫效果
     const animalSprite = document.getElementById(`${animalType}-sprite`);
-    animalSprite.classList.add('fed');
-    setTimeout(() => animalSprite.classList.remove('fed'), 1000);
+    if (animalSprite) {
+      animalSprite.classList.add('fed');
+      setTimeout(() => animalSprite.classList.remove('fed'), 1000);
+    }
 
-    // 更新食物顯示
-    this.renderFoodItems();
     this.updateDisplay();
     this.closeModal();
-    this.showNotification(`成功餵食${this.getAnimalName(animalType)}！剩餘食物：${currentQuantity - 1}`);
+    const animalName = this.getAnimalName(animalType) || '動物';
+    const cost = this.selectedFood ? this.selectedFood.cost : 0;
+    this.showNotification(`成功餵食${animalName}！消耗了${cost}研究點數`);
   }
 
   getFoodEffect(foodType, animalType) {
@@ -236,7 +228,7 @@ class Laboratory {
 
   getAnimalName(type) {
     // 如果動物資料中有名稱，直接使用
-    if (this.animals[type] && this.animals[type].name) {
+    if (type && this.animals[type] && this.animals[type].name) {
       return this.animals[type].name;
     }
     return '動物';
@@ -247,12 +239,12 @@ class Laboratory {
     const decorationType = decorationItem.dataset.decoration;
     const cost = parseInt(decorationItem.dataset.cost);
 
-    if (this.coins < cost) {
-      this.showNotification('金幣不足！', 'error');
+    if (!window.pointsManager.hasEnoughPoints(cost)) {
+      this.showNotification(`研究點數不足！需要${cost}點數`, 'error');
       return;
     }
 
-    this.coins -= cost;
+    window.pointsManager.subtractPoints(cost);
     this.selectedDecoration = decorationType;
     this.updateDisplay();
     this.showNotification('點擊實驗室環境來放置裝飾！');
@@ -302,12 +294,7 @@ class Laboratory {
 
   updateDisplay() {
     if (window.pointsManager) {
-      window.pointsManager.setCoins(this.coins);
-      window.pointsManager.setPoints(this.researchPoints);
       window.pointsManager.updateDisplay();
-    } else {
-      document.getElementById('coins').textContent = this.coins;
-      document.getElementById('research-points').textContent = this.researchPoints;
     }
 
     // 更新動物狀態條
@@ -315,11 +302,13 @@ class Laboratory {
       const animal = this.animals[animalType];
       const slot = document.querySelector(`[data-animal="${animalType}"]`);
       
-      const hungerBar = slot.querySelector('.hunger-fill');
-      const happinessBar = slot.querySelector('.happiness-fill');
-      
-      hungerBar.style.width = animal.hunger + '%';
-      happinessBar.style.width = animal.happiness + '%';
+      if (slot) {
+        const hungerBar = slot.querySelector('.hunger-fill');
+        const happinessBar = slot.querySelector('.happiness-fill');
+        
+        if (hungerBar) hungerBar.style.width = animal.hunger + '%';
+        if (happinessBar) happinessBar.style.width = animal.happiness + '%';
+      }
     });
   }
 
@@ -347,17 +336,24 @@ class Laboratory {
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
     notification.textContent = message;
+    
+    const isCenterMessage = message.includes('點擊實驗室環境來放置裝飾') || 
+                           message.includes('裝飾放置成功') || 
+                           message.includes('研究點數不足') ||
+                           message.includes('成功餵食') ||
+                           message.includes('還沒有收集到任何動物');
+    
     notification.style.cssText = `
       position: fixed;
-      top: 20px;
-      right: 20px;
+      ${isCenterMessage ? 'top: 50%; left: 50%; transform: translate(-50%, -50%);' : 'top: 20px; right: 20px;'}
       padding: 15px 20px;
       border-radius: 5px;
       color: white;
       font-weight: bold;
       z-index: 1000;
-      animation: slideIn 0.3s ease;
+      animation: ${isCenterMessage ? 'fadeIn' : 'slideIn'} 0.5s ease-out;
       background: ${type === 'error' ? '#e74c3c' : '#27ae60'};
+      ${isCenterMessage ? 'font-size: 1.2em; box-shadow: 0 4px 12px rgba(0,0,0,0.3);' : ''}
     `;
     
     document.body.appendChild(notification);

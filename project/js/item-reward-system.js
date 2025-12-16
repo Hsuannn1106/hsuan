@@ -9,11 +9,11 @@ class ItemRewardSystem {
       { id: 'tree', name: '樹木', icon: '🌳', type: '裝飾', rarity: '稀有', description: '一棵茂盛的樹木，可以放置在動物棲息地。' },
       { id: 'rock', name: '岩石', icon: '🪨', type: '裝飾', rarity: '普通', description: '一塊天然岩石，可以放置在動物棲息地。' },
       { id: 'flower', name: '花朵', icon: '🌸', type: '裝飾', rarity: '普通', description: '美麗的花朵，增加環境美觀度。' },
-      { id: 'house', name: '小屋', icon: '🏠', type: '裝飾', rarity: '史詩', description: '一個精美的小屋，動物可以在裡面休息。' },
-      { id: 'fountain', name: '噴泉', icon: '⛲', type: '裝飾', rarity: '史詩', description: '優雅的噴泉，提供清潔的水源。' },
+      { id: 'house', name: '小屋', icon: '🏠', type: '裝飾', rarity: '高級', description: '一個精美的小屋，動物可以在裡面休息。' },
+      { id: 'fountain', name: '噴泉', icon: '⛲', type: '裝飾', rarity: '高級', description: '優雅的噴泉，提供清潔的水源。' },
       { id: 'magnifier', name: '放大鏡', icon: '🔍', type: '研究', rarity: '稀有', description: '一個高品質的放大鏡，可以用來研究動物的細節。' },
       { id: 'notebook', name: '筆記本', icon: '📓', type: '研究', rarity: '普通', description: '一本用來記錄研究筆記的本子。' },
-      { id: 'camera', name: '相機', icon: '📷', type: '研究', rarity: '史詩', description: '一台高解析度相機，可以拍攝動物的照片。' },
+      { id: 'camera', name: '相機', icon: '📷', type: '研究', rarity: '高級', description: '一台高解析度相機，可以拍攝動物的照片。' },
       { id: 'telescope', name: '望遠鏡', icon: '🔭', type: '研究', rarity: '稀有', description: '觀察遠處動物的好工具。' },
       { id: 'compass', name: '指南針', icon: '🧭', type: '研究', rarity: '普通', description: '探索時不迷路的必備工具。' }
     ];
@@ -213,7 +213,7 @@ class ItemRewardSystem {
       
       .reward-item-card.rarity-普通 { border-color: #95a5a6; }
       .reward-item-card.rarity-稀有 { border-color: #3498db; }
-      .reward-item-card.rarity-史詩 { border-color: #9b59b6; }
+      .reward-item-card.rarity-高級 { border-color: #9b59b6; }
       
       .item-icon-large {
         font-size: 40px;
@@ -242,7 +242,7 @@ class ItemRewardSystem {
       
       .item-rarity-badge.普通 { background: #95a5a6; }
       .item-rarity-badge.稀有 { background: #3498db; }
-      .item-rarity-badge.史詩 { background: #9b59b6; }
+      .item-rarity-badge.高級 { background: #9b59b6; }
       
       .reward-summary {
         margin: 25px 0;

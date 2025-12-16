@@ -218,7 +218,7 @@
             },
             {
                 id: 25,
-                name: "狐狸貓頭鷹",
+                name: "貓頭鷹",
                 emoji: "🦉",
                 category: "forest",
                 habitat: "森林樹洞",

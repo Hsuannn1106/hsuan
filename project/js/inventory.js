@@ -181,7 +181,7 @@ function addInventoryStyles() {
         case '稀有':
           rarityClass = 'rarity-rare';
           break;
-        case '史詩':
+        case '高級':
           rarityClass = 'rarity-epic';
           break;
         case '傳說':

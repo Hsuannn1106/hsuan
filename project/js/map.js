@@ -244,7 +244,7 @@ class MapSystem {
     document.body.appendChild(successModal);
     
     setTimeout(() => {
-      window.location.reload();
+      window.location.href = 'start.html';
     }, 2000);
   }
 }

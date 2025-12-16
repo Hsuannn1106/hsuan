@@ -1,3 +1,8 @@
+/* 基礎響應式設定 */
+* {
+    box-sizing: border-box;
+}
+
 /* 共用按鈕 */
 .control-button {
     width: 40px;

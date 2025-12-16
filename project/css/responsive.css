@@ -1,0 +1,297 @@
+/* 響應式設計 - 適配所有設備 */
+
+/* 基礎響應式設定 */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* 平板設備 (768px - 1024px) */
+@media (max-width: 1024px) {
+    .hp-title {
+        font-size: 1.3rem !important;
+    }
+    
+    .control-button {
+        width: 35px !important;
+        height: 35px !important;
+        margin-right: 10px !important;
+    }
+    
+    .page-container .map-title {
+        font-size: 1.5rem !important;
+    }
+    
+    .page-container .zones {
+        gap: 20px !important;
+        padding: 0 15px;
+    }
+}
+
+/* 手機設備 (最大 768px) */
+@media (max-width: 768px) {
+    /* 頂部區域 */
+    .hp-top-area {
+        height: 50px !important;
+        padding: 0 10px !important;
+    }
+    
+    .hp-title {
+        font-size: 1.1rem !important;
+        margin-right: 10px !important;
+    }
+    
+    .control-button {
+        width: 30px !important;
+        height: 30px !important;
+        margin-right: 8px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .back-button {
+        padding: 8px 15px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    /* 地圖頁面 */
+    .page-container .map-title {
+        font-size: 1.3rem !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .page-container .zones {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+        padding: 0 10px;
+    }
+    
+    .page-container .zone {
+        padding: 15px !important;
+    }
+    
+    .page-container .zone-image {
+        height: 120px !important;
+        font-size: 2.5rem !important;
+    }
+    
+    .page-container .zone h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .page-container .zone p {
+        font-size: 0.9rem !important;
+    }
+    
+    .game-btn {
+        padding: 8px 16px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    /* 遊戲頁面 */
+    .g1-level-title h1,
+    .g2-level-title h1,
+    .g3-level-title h1,
+    .g4-level-title h1 {
+        font-size: 1.4rem !important;
+    }
+    
+    .g1-level-title p,
+    .g2-level-title p,
+    .g3-level-title p,
+    .g4-level-title p {
+        font-size: 0.95rem !important;
+    }
+    
+    /* 彈窗 */
+    .modal-content {
+        width: 90% !important;
+        max-width: 320px !important;
+        padding: 20px !important;
+    }
+    
+    .modal-icon {
+        font-size: 2.5rem !important;
+    }
+    
+    .modal-title {
+        font-size: 1.3rem !important;
+    }
+    
+    .modal-message {
+        font-size: 1rem !important;
+    }
+    
+    .modal-button {
+        padding: 8px 20px !important;
+        font-size: 1rem !important;
+    }
+    
+    /* 成就通知 */
+    .achievement-notification {
+        width: 90% !important;
+        max-width: 320px !important;
+    }
+    
+    .achievement-popup {
+        padding: 15px !important;
+    }
+    
+    .achievement-popup-icon {
+        font-size: 2rem !important;
+    }
+    
+    .achievement-popup-title {
+        font-size: 1rem !important;
+    }
+    
+    .achievement-popup-name {
+        font-size: 1.1rem !important;
+    }
+    
+    /* 按鈕調整 */
+    .reset-btn-corner {
+        width: 50px !important;
+        height: 50px !important;
+        bottom: 15px !important;
+        right: 15px !important;
+        font-size: 1.2rem !important;
+    }
+    
+    .ai-assistant-btn {
+        font-size: 0.8rem !important;
+        padding: 6px 12px !important;
+        margin-right: 5px !important;
+    }
+}
+
+/* 小手機設備 (最大 480px) */
+@media (max-width: 480px) {
+    .hp-top-area {
+        height: 45px !important;
+        padding: 0 8px !important;
+    }
+    
+    .hp-title {
+        font-size: 1rem !important;
+        margin-right: 8px !important;
+    }
+    
+    .control-button {
+        width: 28px !important;
+        height: 28px !important;
+        margin-right: 6px !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .back-button {
+        padding: 6px 12px !important;
+        font-size: 0.85rem !important;
+    }
+    
+    .page-container .map-title {
+        font-size: 1.2rem !important;
+    }
+    
+    .page-container .zone {
+        padding: 12px !important;
+    }
+    
+    .page-container .zone-image {
+        height: 100px !important;
+        font-size: 2rem !important;
+    }
+    
+    .page-container .zone h3 {
+        font-size: 1.1rem !important;
+    }
+    
+    .page-container .zone p {
+        font-size: 0.85rem !important;
+    }
+    
+    .game-btn {
+        padding: 6px 12px !important;
+        font-size: 0.85rem !important;
+    }
+    
+    .g1-level-title h1,
+    .g2-level-title h1,
+    .g3-level-title h1,
+    .g4-level-title h1 {
+        font-size: 1.2rem !important;
+    }
+    
+    .g1-level-title p,
+    .g2-level-title p,
+    .g3-level-title p,
+    .g4-level-title p {
+        font-size: 0.9rem !important;
+    }
+    
+    .modal-content {
+        padding: 15px !important;
+    }
+    
+    .modal-icon {
+        font-size: 2rem !important;
+    }
+    
+    .modal-title {
+        font-size: 1.2rem !important;
+    }
+    
+    .modal-message {
+        font-size: 0.95rem !important;
+    }
+    
+    .reset-btn-corner {
+        width: 45px !important;
+        height: 45px !important;
+        bottom: 10px !important;
+        right: 10px !important;
+        font-size: 1.1rem !important;
+    }
+}
+
+/* 橫向模式優化 */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hp-top-area {
+        height: 45px !important;
+    }
+    
+    .page-container .zones {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    .page-container .zone-image {
+        height: 100px !important;
+    }
+    
+    .modal-content {
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+}
+
+/* 超大螢幕優化 (1920px+) */
+@media (min-width: 1920px) {
+    .page-container .zones {
+        max-width: 1200px !important;
+        gap: 40px !important;
+    }
+    
+    .page-container .zone {
+        padding: 25px !important;
+    }
+    
+    .page-container .zone-image {
+        height: 180px !important;
+        font-size: 3.5rem !important;
+    }
+}
